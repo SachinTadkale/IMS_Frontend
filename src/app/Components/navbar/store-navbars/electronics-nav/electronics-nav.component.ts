@@ -18,7 +18,7 @@ export class ElectronicsNavComponent {
       // Optionally, clear token from localStorage or sessionStorage
       localStorage.removeItem('token');
       // Redirect to login page
-      this.router.navigate(['/landing']);
+      this.router.navigate(['/public-landing']);
    
     
   }

@@ -10,6 +10,7 @@ import { UserProfileComponent } from './Pages/user-profile/user-profile.componen
 import { SellersComponent } from './Pages/Electronics-Store/UserDashboard/Sections/sellers/sellers.component';
 import { SubscriptionComponent } from './Pages/Authentication/subscriptions/subscription/subscription.component';
 import { CentralLandingComponent } from './Pages/CentralLanding/central-landing/central-landing.component';
+import { LandingPageComponent } from './Pages/landing-page/landing-page.component';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,8 @@ export const routes: Routes = [
         (m) => m.LandingPageComponent
       );
     },
+  },{
+    path: 'public-landing', component: LandingPageComponent
   },
   {
     path: 'landing',
