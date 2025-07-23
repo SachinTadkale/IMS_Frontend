@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="login-container">
+    <div class="login-left-container">
+      <img
+        src="../../../../assets/signin.png"
+        alt="This is Image"
+        width="350px"
+      />
+    </div>
+    <div class="login-right-container">
+      <div class="title">
+        <h1>Welcome Back!</h1>
+        <p> Sign in to manage your Inventory.</p>
+      </div>
+      <div class="login-form">
+        <form (ngSubmit)="onLogin()">
+          <input
+            type="text"
+            name="email"
+            placeholder="Enter Email"
+            [(ngModel)]="loginData.username"
+            required
+          />
+
+          <div class="password-wrapper">
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              name="password"
+              placeholder="Password"
+              [(ngModel)]="loginData.password"
+              required
+            />
+            <i
+              class="toggle-password fa"
+              [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+              (click)="togglePasswordVisibility()"
+            ></i>
+          </div>
+          
+          <button type="submit" id="login-btn">Log In</button>
+          <p id="register">
+            Didn't Register?
+            <a id="signup-page" routerLink="/signup">Register Here</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

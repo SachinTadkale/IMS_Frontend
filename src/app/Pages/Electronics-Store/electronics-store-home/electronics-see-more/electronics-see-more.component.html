@@ -1,0 +1,44 @@
+<app-electronics-nav></app-electronics-nav>
+<div class="parent-container">
+  <div class="title"><span>Our Products</span></div>
+<div class="featured-categories-product-container">
+  <div
+    class="featured-categories-product-card-container"
+    *ngFor="let product of products; let i = index"
+  >
+    <div class="featured-product-discount">
+      <img src="../../../../assets/disc-tag.png" alt="" />
+    </div>
+    <div class="featured-categories-product-info">
+      <div class="featured-product-image">
+        <img
+          [src]="getImageUrl(product.product_id)"
+          alt="Product Image"
+          class="product-image"
+        />
+      </div>
+      <div class="featured-product-head">
+        <p id="product_name">{{ product.product_name }}</p>
+        <p id="product_price">₹ {{ product.product_price }}</p>
+      </div>
+    </div>
+    <div class="featured-product-rating">
+      <img src="../../../../assets/stars.png" alt="" />
+    </div>
+    <div class="featured-product-description" [class.expanded]="expandedIndex === i">
+      <ng-container *ngIf="product.product_description.length > 50; else fullText">
+        {{ expandedIndex === i ? product.product_description : (product.product_description | slice:0:50)}}
+        <span id="read-more" (click)="toggleDescription(i)">
+          {{ expandedIndex === i ? 'Read less' : 'Read more...' }}
+        </span>
+      </ng-container>
+      <ng-template #fullText>
+        {{ product.product_description }}
+      </ng-template>
+    </div>
+    <div class="featured-product-bottom">
+      <button type="submit" id="add-to-cart-btn">Add To Cart</button>
+    </div>
+  </div>
+</div>
+</div>

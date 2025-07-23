@@ -1,0 +1,47 @@
+<div id="nav-container">
+  <div id="navbar">
+    <div id="logo"><img src="../../../../assets/logos/inventory-black.png" alt=""> <h5>Inventory Management System</h5></div>
+    <div id="input">
+      <img src="../../../../assets/logos/search.png" width="30px" height="30px" id="search-logo">
+      <input type="search" placeholder="Search..." id="search_bar" />
+      <!-- <input type="submit" value="search" id="search_btn"> -->
+    </div>
+    <div id="box">
+      <div id="Addtocart">Add to cart</div>
+      <div id="basket"><img src="../../../../assets/cart.png" id="cart" /></div>
+    </div>
+  </div>
+
+  <!--navbar starts  -->
+  <div id="nav">
+    <ul>
+      <li id="select-store">
+        <img src="../../../../assets/logos/windows.png" alt="" width="25px">
+        <select name="store-type" id="store-type" (change)="navigate($event)">
+          <option value="" selected disabled>All Store</option>
+          <option value="grocery">Grocery</option>
+          <option value="electronics">Electronics</option>
+          <option value="hardware">Industrial Hardware</option>
+        </select>
+      </li>
+      <li>Home</li>
+      <li>About us</li>
+      <li>Categories</li>
+      <li>Store</li>
+      <li>Dashboard</li>
+      <li>
+        <select
+          name="signup-login"
+          id="signup-login"
+          (change)="navigate($event)"
+        >
+          <option value="" selected disabled>Account</option>
+          <option value="signup">SignUp</option>
+          <option value="login" (click)="logOut()">LogIn</option>
+        </select>
+      </li>
+      <li routerLink="/adminLogin">Admin Login</li>
+    </ul>
+  </div>
+  <!-- navbar ends -->
+</div>

@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="product-header">
+    <div class="form-group">
+      <select [(ngModel)]="productCategory" (change)="onCategoryChange()" name="category" required>
+        <option value="" disabled>Select category</option>
+        <option *ngFor="let cat of categories" [value]="cat">
+          {{ cat }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (input)="onSearchChange()"
+        placeholder="Search Product..."
+      />
+    </div>
+  </div>
+
+  <table *ngIf="filteredProducts.length > 0; else noProducts">
+    <thead>
+      <tr>
+        <th>Sr.No</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Stock</th>
+        <th>Price</th>
+        <th>GST Type</th>
+        <th>GST Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of filteredProducts; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>
+          <img
+            [src]="getImageUrl(product.product_id)"
+            class="product-image"
+            alt="Product image"
+            width="50px"
+          />
+        </td>
+        <td>{{ product.productName }}</td>
+        <td>{{ product.product_description }}</td>
+        <td>{{ product.productCategory }}</td>
+        <td>{{ product.product_available_stock_quantity }}</td>
+        <td>{{ product.product_price }}</td>
+        <td>{{ product.gst_type }}</td>
+        <td>{{ product.gst_rate }} Percent</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noProducts>
+    <div class="no-data-message">
+      <p>No products found...</p>
+    </div>
+  </ng-template>
+</div>

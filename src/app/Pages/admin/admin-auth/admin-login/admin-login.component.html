@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="login-container">
+    <h1>Admin Login</h1>
+    <form (ngSubmit)="OnAdminLogin()">  
+      <input 
+        type="text" 
+        name="username" 
+        placeholder="Admin Username" 
+        [(ngModel)]="loginData.username" 
+        required />
+
+      <input 
+        type="password" 
+        name="password" 
+        placeholder="Admin Password" 
+        [(ngModel)]="loginData.password" 
+        required />
+
+      <button type="submit" id="login-btn">Log In</button>
+    </form>
+  </div>
+</div>
+

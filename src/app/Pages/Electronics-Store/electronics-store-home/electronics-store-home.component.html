@@ -1,0 +1,132 @@
+<app-electronics-nav></app-electronics-nav>
+
+<div id="banner">
+  <div>
+    <img src="../../../../assets/electronics.png" id="banner_img" />
+  </div>
+  <div id="banner_text">
+    <p class="p">Your Inventory, Your</p>
+    <p class="p">
+      Way—<span style="color: rgb(24, 207, 198)"><b>Organized</b></span>
+    </p>
+    <p class="p">
+      <span style="color: rgb(24, 207, 198)"><b>Optimized</b></span> and
+      <span style="color: rgb(24, 207, 198)"><b>Always</b></span>
+    </p>
+    <p class="p">
+      <span style="color: rgb(24, 207, 198)"><b>in control</b></span>
+    </p>
+  </div>
+</div>
+<div class="featured-categories-container">
+  <div class="featured_categories_title">
+    <div class="left">Featured categories</div>
+    <div class="right"><a routerLink="/electronics-store-see-more">See More</a></div>
+  </div>
+    <app-featured-categories-card></app-featured-categories-card>
+</div>
+
+<div id="track">
+  <div id="track_img">
+    <img src="../../../../assets/discount.png" height="370px" />
+  </div>
+
+  <div id="txt_btn">
+    <div id="track_txt">
+      <p class="track_txt"><b>Track,manage and grow effortlessely.</b></p>
+      <p class="track_txt">Now get Real-time insights,zero</p>
+      <p class="track_txt">guesswork at 15% off on first use.</p>
+    </div>
+
+    <div>
+      <input type="submit" value="Visit now" name="visit now" id="track_btn" />
+    </div>
+  </div>
+</div>
+
+<!-- popular products -->
+
+<div id="popular_products_heading">Popular products</div>
+<div id="popular_products">
+  <div id="first_div">
+    <img src="../../../../assets/electronics.png" id="popular_products_img" />
+  </div>
+  <div id="mid_div">
+    <div>
+      <input type="submit" value="Shop Now" name="shopnow" id="shop_now" />
+    </div>
+    <div>
+      <input
+        type="submit"
+        value="View more products"
+        name="view_more_products"
+        id="view_more_products"
+      />
+    </div>
+    <div id="bottom_div">
+      <img src="../../../../assets/dryer.png" id="popular_products_dryer_img" />
+    </div>
+  </div>
+
+  <div id="last_div">
+    <img
+      src="../../../../assets/speaker.png"
+      id="popular_products_speaker_img"
+    />
+  </div>
+</div>
+
+<!-- Daily best sells -->
+
+<h2 id="Daily_best_sells">Daily best sells</h2>
+<div id="main_box">
+  <div class="daily_sells_outer_box" *ngFor="let product of products | slice:0:1" >
+    <div id="oven_img"><img [src]="getImageUrl(product.product_id)" width="150px"/></div>
+    <div id="img_description">
+      <p id="daily_sells_description">{{product.product_name}}</p>
+      <p class="daily_sells_txt">
+        <span style="color: rgb(9, 169, 180)">₹ {{product.product_price}} <s class="mrp-tag">₹ 30000</s></span>
+      </p>
+      <p class="daily_sells_txt">
+       {{product.product_description}}<span
+          style="color: rgb(9, 169, 180)"
+          > Read more...</span
+        >
+      </p>
+      <div class="offer">
+        <p id="title">Offer Ends In</p>
+        <div class="offer-time">
+        <div class="time"><p class="digit">05</p><p class="text">Days</p></div>
+        <div class="time"><p class="digit">12</p><p class="text">Hours</p></div>
+        <div class="time"><p class="digit">06</p><p class="text">Mins</p></div>
+        <div class="time"><p class="digit">15</p><p class="text">Sec</p></div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="daily_sells_outer_box" *ngFor="let product of products | slice:3:4">
+    <div id="fridge_img"><img [src]="getImageUrl(product.product_id)" width="120px"/></div>
+    <div id="img_description">
+      <p id="daily_sells_description">{{product.product_name}}</p>
+      <p class="daily_sells_txt">
+        <span style="color: rgb(9, 169, 180)">₹ {{product.product_price}}<s class="mrp-tag">₹ 100000</s></span>
+      </p>
+      <p class="daily_sells_txt">
+        {{product.product_description}}<span
+          style="color: rgb(9, 169, 180)"
+          > Read more...</span
+        >
+      </p>
+      <div class="offer">
+        <p id="title">Offer Ends In</p>
+        <div class="offer-time">
+        <div class="time"><p class="digit">05</p><p class="text">Days</p></div>
+        <div class="time"><p class="digit">12</p><p class="text">Hours</p></div>
+        <div class="time"><p class="digit">06</p><p class="text">Mins</p></div>
+        <div class="time"><p class="digit">15</p><p class="text">Sec</p></div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-landing-footer></app-landing-footer>

@@ -1,0 +1,9 @@
+.AsideSecssion{
+    width: 74%;
+    height: 500px;
+    background-color: rgb(199, 188, 173);
+    position: absolute;
+    z-index: -1;
+    left: 25%;
+    margin-top: 32px;
+}

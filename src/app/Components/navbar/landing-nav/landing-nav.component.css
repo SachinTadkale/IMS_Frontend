@@ -1,0 +1,151 @@
+#nav-container {
+  background-color: #fff;
+  color: #333;
+  font-weight: 400;
+  font-size: 1.1em;
+}
+
+#navbar {
+  height: 75px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 1em 0 0 0;
+}
+
+#input {
+  margin-left: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  border-radius: 8px;
+  border: 2px solid #e6e6e6;
+  background-color: #fff;
+  width: 500px;
+}
+
+#search-logo {
+  position: absolute;
+  top: 40px;
+  margin-left: 10px;
+}
+#search_bar {
+  position: relative;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  height: 40px;
+  width: 100%;
+  padding: 0 10px 0 43px;
+  color: #373737;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+#search_bar::placeholder {
+  color: #a7a7a7;
+  font-weight: 500;
+}
+#search_btn {
+  width: 120px;
+  height: 35px;
+  margin-left: 5px;
+}
+#box {
+  /* border: 1px solid rgb(255, 0, 221); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 30px;
+}
+#Addtocart {
+  position: relative;
+}
+
+#logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-left: 100px;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+#cart {
+  height: 30px;
+  width: 30px;
+  margin-left: 5px;
+}
+#Addtocart {
+  display: flex;
+  padding: 0.3em;
+}
+#nav {
+  height: 70px;
+  width: 100%;
+  /* border:1px solid red; */
+  margin-top: 10px ;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  justify-content: center;
+  gap: 30px ;
+  padding-left: 30px;
+}
+select {
+  color: #333;
+  background-color: transparent;
+  border: none;
+  font-size: 1em;
+  outline: none;
+  font-weight: 400;
+  font-size: 1.1em;
+}
+li {
+  position: relative;
+  text-decoration: none;
+  padding: 0.3em 0;
+  font-weight: 400;
+}
+#box #Addtocart::after,
+li::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  background-color: #333;
+  height: 1.5px;
+  transition: all 0.2s ease-in-out;
+  transform: translateX(-50%);
+}
+
+#box #Addtocart:hover::after,
+li:not(#select-store):hover::after {
+  border-radius: 10px;
+  width: 100%;
+}
+
+
+#select-store{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  background-color: rgb(98, 225, 98);
+  height: 1.6em;
+  width: 15em;
+}
+#select-store select{
+  color: #fff;
+}
+option {
+  color: #1e1e1e;
+}
+#select-store:hover, #select-store select:hover{
+  cursor: pointer;
+}

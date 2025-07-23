@@ -1,0 +1,50 @@
+<app-electronics-nav></app-electronics-nav>
+
+<div class="cart-container">
+  <h2>Your Shopping Cart</h2>
+
+  <div *ngIf="items.length === 0">
+    <p>Your cart is empty.</p>
+  </div>
+
+  <ul *ngIf="items.length > 0" class="cart-items">
+    <li *ngFor="let item of items" class="cart-item">
+
+      <div class="featured-product-image">
+        <img
+          [src]="item.imgurl"
+          alt="Product Image"
+          class="product-image"
+        />
+      </div>
+
+      <div>
+        <strong>{{ item.name }}</strong><br />
+        Price: ₹{{ item.price }}
+        <br />
+        Quantity:
+        <input
+        type="number"
+        min="1"
+        [(ngModel)]="item.quantity"
+        (blur)="updateTotal()"
+      />
+      
+        <br />
+        Product Description: {{item.description}}<br>
+        Subtotal: ₹{{ item.price * item.quantity }}<br>
+        GST Type : {{ item.gstType}}<br>
+        GST Rate : {{ item.gstRate}}% <br>
+        GST Amount : {{ item.gstAmount}}<br>
+        Total Amount : {{ item.totalAmount}}
+      </div>
+      <button (click)="removeItem(item.id)">Remove</button>
+    </li>
+  </ul>
+
+  <div *ngIf="items.length > 0" class="cart-summary">
+    <h3>Total: ₹{{ total }}</h3>
+    <button (click)="exicuteBill()">Exicute Bill</button>
+    <button (click)="clearCart()">Clear Cart</button>
+  </div>
+</div>

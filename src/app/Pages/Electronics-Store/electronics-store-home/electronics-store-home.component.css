@@ -1,0 +1,272 @@
+#banner {
+  margin: 20px;
+  background: url("../../../../assets/Blue-BG.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 651px;
+  display: flex;
+  align-items: center;
+}
+#banner_img {
+  height: 450px;
+  width: 550px;
+  margin-left: 150px;
+}
+
+#banner_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: xx-large;
+  height: 435px;
+  margin-left: 120px;
+}
+
+.p {
+  margin-top: 10px;
+}
+.featured-categories-container {
+  display: flex;
+  flex-direction: column;
+}
+.featured_categories_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em 3em;
+}
+
+.featured_categories_title .left,
+#popular_products_heading,
+#Daily_best_sells {
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.featured_categories_title .right a {
+  font-size: 1.1em;
+  color: black;
+}
+#track {
+  position: relative;
+  height: 395px;
+  background-color: rgb(198, 236, 240);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 7em;
+  margin: 3em 5em;
+}
+
+#track_img img {
+  position: absolute;
+  bottom: 70px;
+  /* border: 1px solid black; */
+}
+
+#txt_btn {
+  /* border:1px solid red; */
+  /* height: 280px; */
+}
+
+#track_txt {
+  height: 160px;
+  width: 635px;
+  /* border: 1px solid blue; */
+}
+
+.track_txt {
+  font-family: poppins;
+  font-size: 25px;
+}
+
+#track_btn {
+  /* border:1px solid green; */
+  height: 70px;
+  width: 280px;
+  background-color: rgb(19, 218, 224);
+  color: aliceblue;
+  font-family: poppins;
+  font-size: 30px;
+  border-radius: 15px;
+  border-style: none;
+}
+
+/* popular products */
+#popular_products {
+  height: 400px;
+  /* border:1px solid rgb(15, 13, 138); */
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#first_div {
+  height: 370px;
+  width: 350px;
+  background-color: rgb(198, 236, 240);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
+#first_div,
+#bottom_div,
+#last_div,
+.daily_sells_outer_box {
+  box-shadow: 0 3px 5px rgba(142, 140, 140, 0.452);
+}
+.popular_products_img {
+  width: 250px;
+  height: 175px;
+  /* border: 1px solid blue; */
+  /* margin: auto; */
+}
+
+#popular_products_dryer_img {
+  height: 200px;
+  width: 200px;
+}
+
+#mid_div {
+  height: 370px;
+  width: 350px;
+  /* border: 1px solid violet; */
+}
+
+#shop_now {
+  height: 60px;
+  width: 347px;
+  background-color: rgb(19, 218, 224);
+  border-radius: 15px;
+  border-style: none;
+  color: aliceblue;
+  font-size: 20px;
+}
+
+#view_more_products {
+  height: 60px;
+  width: 347px;
+  background-color: transparent;
+  border: 1px solid #adadad;
+  border-radius: 15px;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+#bottom_div {
+  background-color: rgb(198, 236, 240);
+  height: 226px;
+  width: 347px;
+  margin-top: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#last_div {
+  height: 370px;
+  width: 350px;
+  /* border: 1px solid rgb(110, 6, 110); */
+  border-radius: 10px;
+  background-color: rgb(198, 236, 240);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#popular_products_speaker_img {
+  width: 180px;
+  height: 200px;
+}
+
+#popular_products_heading {
+  margin: 0 0 1em 2em;
+}
+#Daily_best_sells {
+  margin: 1em 2em;
+}
+
+#main_box {
+  /* height: 350px; */
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.daily_sells_outer_box {
+  text-align: justify;
+  padding: 1em;
+  /* height: 325px; */
+  width: 30em;
+  background-color: #fafafa;
+  border-radius: 10px;
+  margin: 0 0 4em 4em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#oven_img,
+#fridge_img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#daily_sells_description {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.daily_sells_txt {
+  margin-top: 10px;
+}
+#img_description {
+  width: 40%;
+}
+/* #fridge_img {
+  height: 280px;
+  width: 140px;
+} */
+.mrp-tag {
+  color: #828282;
+  margin-left: 0.7em;
+}
+.offer #title {
+  color: #8d8d8d;
+  margin-top: 0.5em;
+}
+.offer-time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.time {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3em;
+  font-size: 1.1em;
+  background-color: #00e5ff;
+  color: #fff;
+  width: 50px; /* Adjust width to fit content */
+  min-width: 50px; /* Ensures consistent size */
+  height: 50px; /* Ensures all boxes are square */
+  border-radius: 5px;
+  text-align: center;
+  box-sizing: border-box; /* Prevents content overflow issues */
+}
+
+.digit {
+  font-weight: 600;
+  /* font-size: 1.3em; */
+}
+.text {
+  font-weight: 300;
+  /* font-size: 1.1em; */
+}

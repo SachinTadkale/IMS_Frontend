@@ -1,0 +1,47 @@
+<div class="modal-backdrop" *ngIf="show">
+  <div class="modal-content">
+    <div class="modal-nav">
+      <div class="modal-title">Seller Details</div>
+      <button id="close-btn" (click)="Close()">
+        <img src="../../../../assets/logos/close-black.png" width="30px" />
+      </button>
+    </div>
+
+    <div class="form-container">
+      <form (submit)="onSubmit($event)">
+        <input
+          type="text"
+          placeholder="Name of Shop"
+          [(ngModel)]="seller.name"
+          name="name"
+          required
+        />
+        <input
+          type="email"
+          placeholder="Email ID"
+          [(ngModel)]="seller.email"
+          name="email"
+          required
+        />
+        <input
+          type="number"
+          placeholder="Gross Sale"
+          [(ngModel)]="seller.grossSale"
+          name="grossSale"
+          min="0"
+          required
+        />
+        <input
+          type="number"
+          placeholder="Earning"
+          [(ngModel)]="seller.earning"
+          name="earning"
+          min="0"
+          required
+        />
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+        <button type="submit"id="save-btn">{{ isEditMode ? "Update" : "Save" }}</button>
+      </form>
+    </div>
+  </div>
+</div>

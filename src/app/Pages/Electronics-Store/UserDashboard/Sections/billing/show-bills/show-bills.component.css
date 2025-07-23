@@ -1,0 +1,56 @@
+.showBillContainer {
+    width: 70%;
+    position: absolute;
+    left: 25%;
+    top: 15px;
+    padding: 2rem;
+   
+    margin: 2rem auto;
+    max-width: 900px;
+  }
+  
+  .billing-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: center;
+  }
+  
+  .billing-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .billing-table thead {
+    background-color:  #00e5ff;
+    color: white;
+  }
+  
+  .billing-table th, .billing-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  
+  
+  .billing-table button {
+    padding: 6px 12px;
+    background-color: #00e5ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .billing-table button:hover {
+    background-color: #53dce6;
+  }
+  

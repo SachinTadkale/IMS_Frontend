@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="signup-container">
+    <div class="signup-left-container">
+      <img src="../../../assets/signup.png" alt="This is Image" width="350px" />
+    </div>
+
+    <div class="signup-right-container">
+      <div class="title">
+        <h1>Get Start Shopping</h1>
+        <p>Welcome to FreshCart! Sign up to manage your inventory with ease.</p>
+      </div>
+
+      <div class="signup-form">
+        <form #f="ngForm" (ngSubmit)="OnSignUp()">
+          <!-- Full Name -->
+          <input type="text" name="full_name" placeholder="Enter Name" [(ngModel)]="signupData.full_name"
+            #fullName="ngModel" required />
+          <div class="signup-alert" *ngIf="fullName.touched && fullName.invalid">
+            <small>Name is required.</small>
+          </div>
+
+          <!-- Email -->
+          <input type="email" name="email" placeholder="Enter Email" [(ngModel)]="signupData.email" 
+            />
+         
+       
+
+
+
+          <!-- Password -->
+          <div class="password-wrapper">
+            <input [type]="showPassword ? 'text' : 'password'" name="password" placeholder="Password"
+              [(ngModel)]="signupData.password" #password="ngModel" required
+              pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" />
+            <i class="toggle-password fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+              (click)="togglePasswordVisibility()"></i>
+          </div>
+          <div class="signup-alert" *ngIf="password.touched && password.errors?.['required']">
+            <small>Password is required.</small>
+          </div>
+          <div class="signup-alert" *ngIf="password.touched && password.errors?.['pattern']">
+            <small>
+              Password must contain:
+              <ul>
+                <li>Minimum 8 characters</li>
+                <li>At least 1 uppercase, 1 lowercase letter</li>
+                <li>At least 1 number and 1 special character ($!%*?&)</li>
+              </ul>
+            </small>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="password-wrapper">
+            <input [type]="showConfirmPassword ? 'text' : 'password'" name="confirm_password"
+              placeholder="Confirm Password" [(ngModel)]="confirm_password" #confirmPwd="ngModel" required />
+            <i class="toggle-password fa" [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"
+              (click)="toggleConfirmPasswordVisibility()"></i>
+          </div>
+          <div class="signup-alert" *ngIf="confirmPwd.touched && confirmPwd.errors?.['required']">
+            <small>Confirm password is required.</small>
+          </div>
+          <div class="signup-alert" *ngIf="
+              confirmPwd.touched &&
+              signupData.password &&
+              confirm_password &&
+              signupData.password !== confirm_password
+            ">
+            <small>Passwords do not match.</small>
+          </div>
+
+
+          <!-- Submit Button -->
+          <button type="submit" id="signup-btn" [disabled]="f.invalid || signupData.password !== confirm_password">
+            SignUp
+          </button>
+
+          <p class="footer-text" style="text-align: center;">
+            Already Registered?
+            <a id="login-page" routerLink="/login">LogIn Here</a>
+          </p>
+        </form>
+
+        <div class="signup-footer">
+          <p class="footer-text" style="text-align: center;">
+            By Continuing, you agree to our
+            <a href="#">Terms of Service</a> & <a href="#">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

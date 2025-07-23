@@ -1,0 +1,51 @@
+<div class="form-container">
+  <h2>Add a Review</h2>
+  <form #reviewForm="ngForm" (submit)="addSellerWithImg()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" [(ngModel)]="newReview.reviewerName" required>
+    </div>
+
+
+    <div class="form-group">
+      <label>Rating:</label>
+      <div class="star-rating">
+        <span *ngFor="let star of stars; let i = index"
+              (click)="setRating(i + 1)"
+              (mouseenter)="hoverRating = i + 1"
+              (mouseleave)="hoverRating = 0"
+              [class.filled]="(hoverRating || newReview.rating) > i">
+          &#9733;
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="reviewText">Review:</label>
+      <textarea id="reviewText" name="reviewText" [(ngModel)]="newReview.comment" required></textarea>
+    </div>
+
+     <div class="file-upload">
+          <input #fileInput type="file" (change)="onFileSelected($event,fileInput)">
+      </div>
+
+    <button type="submit" class="submit-button" [disabled]="!reviewForm.valid">Submit Review</button>
+  </form>
+</div>
+
+<div class="reviews-container">
+  <h3>All Reviews</h3>
+  <div class="review-card" *ngFor="let review of reviews">
+    <div class="review-header">
+       <img [src]="'http://localhost:8080/api/review/serveImage/' + review.imagePath" alt="My Image">
+      <strong>{{ review.reviewerName }}</strong>
+      <div class="star-rating small">
+        <span *ngFor="let star of stars; let i = index"
+              [class.filled]="review.rating > i">
+          &#9733;
+        </span>
+      </div>
+    </div>
+    <p class="review-comment">{{ review.comment }}</p>
+  </div>
+</div>

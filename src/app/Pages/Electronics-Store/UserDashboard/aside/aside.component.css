@@ -1,0 +1,71 @@
+/* -----------------------Side Bar --------------------- */
+.sidebar {
+    position: fixed;
+    margin-top: 80px;
+    width: 20%;
+    background: #CAFAFF;
+    height: 100vh;
+    padding: 20px;
+    top: 0px;
+    border-radius: 10px;
+}
+
+.sidebar h2 {
+    color: #333;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    margin: .7em 0;
+    cursor: pointer;
+    color: #000;
+    border-radius: 10px;
+    transition: all .15s ease-in-out;
+}
+.sidebar ul li:hover{
+  background: #b9ecf2;
+}
+.sidebar ul li.active {
+    background: #00E5FF;
+    color: white;
+    font-weight: 600;
+}
+
+.active {
+    background-color: #00E5FF;
+    color: white;
+    font-weight: 600;
+}
+
+
+/* ----------------------------Main content ------------------------ */
+
+
+
+  
+  .billing-dropdown {
+    border:none;
+    background-color: transparent; /* Make background transparent */
+    width: 200px;
+    color: #000; /* Optional: ensure text is visible */
+    transition: border-color 0.3s ease;
+    font-size: 16px;
+   
+  }
+  
+  .billing-dropdown:focus {
+    border-color: #007bff;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.2); /* optional soft highlight on focus */
+  }
+  
+  li.active .billing-dropdown {
+    border-color: #28a745;
+    background-color: rgba(0, 255, 0, 0.1); /* optional active effect */
+  }
+  

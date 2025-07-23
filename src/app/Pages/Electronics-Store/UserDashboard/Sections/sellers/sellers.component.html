@@ -1,0 +1,78 @@
+<div class="page-wrapper">
+  <!-- 🔍 Search bar + Filter dropdown -->
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search sellers..."
+      [(ngModel)]="searchTerm"
+    />
+
+    <select [(ngModel)]="searchField">
+      <option value="name">Name</option>
+      <option value="email">Email</option>
+      <option value="id">ID</option>
+      <option value="grossSale">Gross Sale</option>
+      <option value="earning">Earning</option>
+    </select>
+
+    <div class="add-btn-container">
+      <button id="add-btn" (click)="openAddSellerModal()">Add Seller</button>
+    </div>
+  </div>
+
+  <!-- 🧾 Seller display -->
+  <!-- 🧾 Seller display -->
+  <div class="seller-display">
+    <div *ngIf="filteredSellers.length === 0">
+      No sellers found matching your search.
+    </div>
+
+    <div
+      class="seller-card"
+      *ngFor="let seller of filteredSellers; let i = index"
+    >
+   
+    
+      <div class="btn-container">
+        <button (click)="editSeller(i)" class="btn edit-btn">
+          <img
+            src="../../../../../../assets/edit-black.png"
+            alt=""
+            title="Edit"
+          />
+        </button>
+        <button class="btn delete-btn" (click)="deleteSeller(i)">
+          <img
+            src="../../../../../../assets/delete-black.png"
+            alt=""
+            title="Delete"
+          />
+        </button>
+      </div>
+       <img [src]="'http://localhost:8080/api/seller/serveImage/' + seller.imagePath" alt="My Image">
+      <div class="info-row">
+        <span class="seller-info" id="seller-name">{{ seller.name }}</span>
+      </div>
+      <div class="info-row">
+        <span class="title">Email: </span>
+        <span class="seller-info email">{{ seller.email }}</span>
+      </div>
+      <div class="info-row">
+        <span class="title">Gross Sale: </span>
+        <span class="seller-info g-sale">{{ seller.grossSale }} Rs.</span>
+      </div>
+      <div class="info-row">
+        <span class="title">Earning: </span>
+        <span class="seller-info earning">{{ seller.earning }} Rs.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 📦 Seller Modal Component -->
+  <app-seller-vendor-modal
+    [show]="showModal"
+    (close)="closeModal()"
+    (fileSelected)="handleFileInput($event)"
+    (formSubmitted)="handleSave($event)"
+  ></app-seller-vendor-modal>
+</div>

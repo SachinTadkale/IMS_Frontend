@@ -1,0 +1,52 @@
+.navbar {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  width: 96.1vw;
+  z-index: 1;
+  top: 0;
+  background-color: #FFF;
+  padding: 22px 30px;
+
+}
+
+.logo {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+gap: 10px;
+color: #000;
+}
+
+.title {
+  flex: 80%;
+  margin-top: 12px;
+  float: left;
+  font-size: 20px;
+  font-weight: bold;
+}
+.nav-links{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+}
+.signin_link,.store-home-link{
+  padding: 0 .3em;
+  background-color:transparent;
+  transition: all 0.2s ease-in-out;
+  border: none;
+}
+.signin_link:hover,.store-home-link:hover{
+ transform: scale(1.15);
+}
+
+
+.username {
+ 
+flex: 7%;
+margin: 7px 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+

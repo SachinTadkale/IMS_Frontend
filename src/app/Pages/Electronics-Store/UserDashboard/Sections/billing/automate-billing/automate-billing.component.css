@@ -1,0 +1,175 @@
+.invoice-box {
+    width: 70%;
+    position: absolute;
+    left: 25%;
+    top: 90px;
+    background-color:#ecfaff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  }
+  
+  
+  .imgheading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px; /* Optional: adds spacing between image and heading */
+    text-align: center;
+  }
+  
+  .invoice-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 40px;
+    margin-bottom: 20px;
+    border-top: 1px solid #BFF7FD;
+  }
+  
+  .content{
+    margin-top:20px;
+    color: #8F8F8F;
+  }
+  
+  
+  .invoice-details, .bill-to {
+    width: 48%;
+  }
+  
+  .bill-to input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 20px;
+  }
+  
+  #customerName{
+    margin-top: 20px;
+  }
+  
+  /* This is entry form style */
+  
+  .item-box {
+    border: 2px dashed #6DF0FF;
+    background-color: #d6fbff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 95%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .item-header, .item-entry {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .item-header {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .item-header div,
+  .item-entry > div {
+    
+    text-align: left;
+  }
+  
+  .item-entry input,
+  .item-entry select {
+    width: 100%;
+    padding: 3px;
+    border: none;
+    border-radius: 5px;
+    background-color: #BCEAFF;
+  }
+  
+  .item-entry .readonly-field {
+    color: #666;
+    background-color: transparent;
+    border: none;
+  }
+  
+  .actions {
+    margin-left: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .actions i {
+    cursor: pointer;
+    color: #f57c00;
+    font-size: 1.2rem;
+  }
+  
+  .add-item {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    color: #f57c00;
+    text-decoration: none;
+    font-weight: bold;
+    gap: 5px;
+    cursor: pointer;
+  }
+  
+  .invoice-calculation{
+  
+    margin-top: 20px;
+  }
+  
+  .invoice-calculation table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+   
+    margin-bottom: 15px;
+  }
+  
+  .invoice-calculation th, .invoice-calculation td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    border: none;
+  }
+  
+  .totals{
+    width: 100%;
+    padding: 15px;
+    border-top: 1px solid #BFF7FD;
+  }
+  
+  .totals p {
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 0;
+  }
+  
+  .totals strong {
+    flex: 1;
+    text-align: left;
+    font-family: Inter;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  
+  }
+  
+  .totals span {
+    flex: 1;
+    text-align: right;
+  }
+  
+  .create-btn {
+    background-color: #3aafee;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 5px;
+  }

@@ -1,0 +1,155 @@
+<section class="invoice-box">
+  <h2 class="mainheading">Create Invoice</h2>
+
+  <!-- Invoice Input Section -->
+  <div class="invoice-section">
+    <div class="invoice-details">
+      <div class="imgheading" style="width: 161px;">
+        <img class="bill_icon" src="../../../../assets/billing_icons/saveIcon.png" alt="save" width="40px"
+          height="40px" />
+        <span class="sub_heading">Invoice Details</span>
+      </div>
+      <p class="content">Invoice Number: {{invoiceNo}}</p>
+      <p class="content">
+        Invoice Date:
+        <input type="date" id="invoiceDate" name="invoiceDate" value="2025-04-03" [(ngModel)]="invoiceDate" />
+
+      </p>
+
+    </div>
+
+    <!--bill to section-->
+    <div class="bill-to">
+      <div class="imgheading" style="width: 94px;">
+        <img class="bill_icon" src="../../../../assets/billing_icons/customer.png" alt="customer" width="40px"
+          height="40px" />
+        <span class="sub_heading">Bill To:</span>
+      </div>
+      <p class="content">Customer Name:</p>
+      <input type="text" name="invoiceName" [(ngModel)]="invoiceName" />
+    </div>
+  </div>
+
+  <!-- Item Entry Section -->
+  <div class="item-box">
+    <div class="item-header">
+      <div style="flex: 1.5;">Item Name</div>
+      <div style="flex: 1;">Price</div>
+      <div style="flex: 0.5;">Qty</div>
+      <div style="flex: 1;">Net Amount</div>
+      <div style="flex: 1;">GST Type</div>
+      <div style="flex:0.5">GST Rate</div>
+      <div style="flex: 1;">GST Amount</div>
+      <div style="flex: 1;">Total Amount</div>
+    </div>
+
+    <div class="item-entry">
+
+      <div style="flex: 1.5;">
+        <input type="text" placeholder="Enter Item" [(ngModel)]="name" list="itemList" (change)="onProductSelected()"/>
+
+      <!--   <datalist id="itemList">
+          <option *ngFor="let item of items" [value]="item.product_name"></option>
+        </datalist> -->
+      </div>
+
+
+
+      <div style="flex: 1;">
+        <input type="number" [(ngModel)]="price" />
+      </div>
+
+      <div style="flex: 0.5;">
+        <input type="number" [(ngModel)]="qty" />
+      </div>
+
+      <div style="flex: 1;">
+        <input type="number" [value]="price * qty" readonly />
+      </div>
+
+      <div style="flex: 1;">
+        <select [(ngModel)]="gstType">
+          <option [value]="CGST + '+' + SGST">CGST+SGST</option>
+          <option [value]="IGST">IGST</option>
+          <option [value]="CGST + '+' + UTGST">CGST+UTGST</option>
+        </select>
+      </div>
+
+
+
+      <div style="flex: 0.5;">
+
+        <select [(ngModel)]="selectedTaxRate">
+          <option [value]="5">5%</option>
+          <option [value]="18">18%</option>
+          <option [value]="28">28%</option>
+        </select>
+
+
+      </div>
+
+      <div style="flex: 1;">
+        <input type="number" [value]="price * qty * selectedTaxRate/100" readonly />
+      </div>
+
+      <div style="flex: 1;">
+        <input type="text" [value]="price * qty + price * qty * selectedTaxRate/100" readonly />
+      </div>
+
+
+    </div>
+
+    <div class="actions" style="margin-top: 10px;">
+      <img src="../../../../assets/billing_icons/AddItem.png" style="cursor: pointer;" (click)="addProduct()" />
+    </div>
+
+  </div>
+
+  <!-- Item Table Section -->
+  <div class="invoice-calculation">
+    <div class="imgheading" style="width: 202px;">
+      <img class="bill_icon" src="../../../../assets/billing_icons/saveIcon.png" alt="calc" width="40px"
+        height="40px" />
+      <span class="sub_heading">Invoice Calculation:</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Item Name</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th>Net Amt</th>
+          <th>GST Type</th>
+          <th>GST Rate</th>
+          <th>GST Amt</th>
+          <th>Total Amt</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of products; let i = index">
+          <td>{{ item.productName }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.netAmount}}</td>
+          <td>{{item.typeOfGST}}</td>
+          <td>{{ item.tax}}%</td>
+          <td>{{item.gst}}</td>
+          <td>{{ item.totalAmount }}</td>
+          <td> <img src="../../../../assets/billing_icons/Trash.png" style="cursor: pointer;"
+              (click)="removeProduct(i)" /></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="totals">
+      <p><strong>Total Invoice Amount:</strong> ₹ {{ total.toFixed(2) }}</p>
+      <p><strong>Invoice Amount Received:</strong> ₹ 0.00</p>
+      <p><strong>Due Date:</strong> {{ invoiceDate }}</p>
+    </div>
+
+    <button class="create-btn" (click)="downloadPDF()">Create your Invoice</button>
+    <button class="create-btn" (click)="previewPDF()">Preview your Invoice</button>
+  </div>
+</section>

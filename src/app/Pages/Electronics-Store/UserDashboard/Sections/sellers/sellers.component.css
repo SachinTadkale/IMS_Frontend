@@ -1,0 +1,202 @@
+.page-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  top: 120px;
+  right: 40px;
+  width: 70%;
+  margin-left: auto; /* Align after sidebar */
+  padding: 20px;
+  gap: 20px;
+}
+
+/* Form at the top */
+.seller-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  background: white;
+  padding: 20px 30px;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#add-btn {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  background-color: #00e5ff;
+  color: #fff;
+  width: 150px;
+  transition: all 0.2s ease-in-out;
+}
+#add-btn:hover {
+  cursor: pointer;
+  background-color: #00d9f1;
+}
+/* Seller display - updated to wrap cards */
+.seller-display {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping to next line */
+  gap: 20px;
+  justify-content: center; /* Center the cards */
+  padding: 10px;
+  margin-top: 5em;
+  overflow-x: hidden; /* No horizontal scroll */
+}
+
+.seller-card {
+  position: relative;
+  width: 37 0px;
+  background-color: #fff;
+  border-radius: 7px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+.seller-card:hover {
+  transform: scale(1.02); /* Lift up slightly on hover */
+}
+/* Seller image */
+.seller-card #profile-img{
+  width: 100px;
+  height: 10  0px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+  /* Seller image */
+.seller-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
+/* Inputs & button styles */
+.seller-form input{
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #00d9f1;
+  width: 200px;
+}
+
+.seller-form input[type="file"] {
+  border: none;
+}
+
+.seller-form button {
+  background-color: #0cf;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  width: 120px;
+}
+
+/* Placeholder styles */
+input::placeholder {
+  color: #888;
+  opacity: 1;
+}
+
+input[type="number"]::placeholder {
+  color: #888;
+}
+.search-bar {
+  position: fixed;
+  top: 120;
+  right: 60px;
+  z-index: 10;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-bar input,
+.search-bar select {
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 2px solid #00d9f1;
+  outline: none;
+}
+.file-upload {
+  position: relative;
+}
+
+.custom-file-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  width: 200px;
+  height: 40px;
+  font-size: 16px;
+  color: #888;
+  cursor: pointer;
+}
+
+.custom-file-label:hover {
+  color: #0cf;
+}
+
+.info-row{
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+#seller-name{
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1.3em;
+}
+.earning{
+  margin-left: 1.5em;
+}
+.email{
+  margin-left: 2.5em;
+
+}
+.title{
+  font-weight: 500;
+  margin-right: 1.2em;
+}
+.btn-container {
+  position: absolute;
+  top: 10px;     /* distance from top edge of card */
+  right: 10px;   /* distance from right edge of card */
+  display: flex;
+  gap: 10px;
+  z-index: 1;
+}
+
+.btn{
+  background-color: transparent;
+  border:none;
+  padding: 5px;
+  color: #fff;
+  font-size: 16px;
+  transition: all .15s ease-in-out;
+}
+.btn img{
+  width: 20px;
+  height: 20px;
+}
+.btn:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}

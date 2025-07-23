@@ -1,0 +1,50 @@
+<nav>
+  <div class="logo">IMS</div>
+  <div class="title">Admin Dashboard</div>
+  <div class="nav-links">
+    <ul>
+      <li>Home</li>
+      <li>
+        <select name="admin-select" id="admin-select" (change)="navigate($event)">
+          <option value="" selected disabled>Account</option>
+          <option value="manage">Manage</option>
+          <option value="logout">Logout</option>
+        </select>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="approve-container">
+  <table>
+    <tr>
+      <th>Sr.No</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Store Type</th>
+      <th>Status</th>
+      <th>Payment Receipt</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let user of usersArray; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ user.full_name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.store_type }}</td>
+      <td [ngStyle]="{ color: getStatusColor(user.status) }">
+        {{ user.status }}
+      </td>
+      <td>
+        <img [src]="imageURL" alt="" width="50px" (click)="viewImage(imageURL)" style="cursor: pointer;" />
+      </td>
+      <td id="action">
+        <button id="approve" (click)="approveUser(user.id)">
+          <img src="../../../../assets/logos/approve-black.png" width="25px" alt="" />
+        </button>
+        <button id="reject" (click)="rejectUser(user.id)">
+          <img src="../../../../assets/logos/reject-black.png" width="25px" alt="" />
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

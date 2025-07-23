@@ -1,0 +1,62 @@
+<div class="sidebar">
+  <ul>
+    <li
+      [ngClass]="{ active: activeItem === 'Dashboard' }"
+      (click)="onItemClick('Dashboard')"
+    >
+      Dashboard
+    </li>
+    <li
+      [ngClass]="{ active: activeItem === 'Products' }"
+      (click)="onItemClick('Products')"
+    >
+      Products
+    </li>
+    <li
+      [ngClass]="{ active: activeItem === 'Categories' }"
+      (click)="onItemClick('Categories')"
+    >
+      Categories
+    </li>
+    <!-- <li
+      [ngClass]="{ active: activeItem === 'Orders' }"
+      (click)="onItemClick('Orders')"
+    >
+      Orders
+    </li> -->
+
+    <li [ngClass]="{ active: activeItem === 'Billing' }">
+      <select
+        #billingSelect
+        name="select-billing-type"
+        id="select-billing-type"
+        (change)="onBillingChange(billingSelect.value)"
+        class="billing-dropdown"
+      >
+        <option value="" selected disabled>Billing</option>
+        <option value="auto-billing">Auto Billing</option>
+        <option value="manual-billing">Manual Billing</option>
+        <option value="show-bills">Show Bills</option>
+      </select>
+    </li>
+
+    <li
+      [ngClass]="{ active: activeItem === 'Sellers' }"
+      (click)="onItemClick('Sellers')"
+    >
+      Sellers / Vendors
+    </li>
+    <!-- <li
+      [ngClass]="{ active: activeItem === 'Customers' }"
+      (click)="onItemClick('Customers')"
+    >
+      Customers
+    </li> -->
+    <li
+      [ngClass]="{ active: activeItem === 'Reviews' }"
+      (click)="onItemClick('Reviews')"
+    >
+      Reviews
+    </li>
+  </ul>
+</div>

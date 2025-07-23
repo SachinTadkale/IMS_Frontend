@@ -1,0 +1,100 @@
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+}
+
+/* Left Profile */
+.profile-info {
+  width: 20%;
+  text-align: center;
+  border-right: 1px solid #ccc;
+  padding: 20px;
+}
+
+.profile-info img {
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile-info h3 {
+  margin: 10px 0 5px;
+}
+
+.profile-info p {
+  color: gray;
+}
+
+/* Center Form */
+.profile-form {
+  width: 50%;
+  padding: 0 20px;
+}
+
+.profile-form h2 {
+  margin-bottom: 20px;
+}
+
+.profile-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-form input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.profile-form .two-col {
+  display: flex;
+  gap: 10px;
+}
+
+.profile-form button {
+  padding: 10px;
+  background-color: #5a2a82;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Right Experience */
+.experience-section {
+  width: 30%;
+  padding: 0 20px;
+  border-left: 1px solid #ccc;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.experience-header button {
+  padding: 5px 10px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.experience-section input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

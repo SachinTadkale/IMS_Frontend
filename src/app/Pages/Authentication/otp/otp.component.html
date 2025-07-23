@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="signup-container">
+    <div class="signup-left-container">
+      <img src="../../../assets/signup.png" alt="This is Image" width="350px" />
+    </div>
+
+    <div class="signup-right-container">
+      <div class="title">
+        <h1>Get Start Shopping</h1>
+        <p>Welcome to FreshCart! Sign up to manage your inventory with ease.</p>
+      </div>
+
+      <div class="otp-container">
+        <input type="email" [(ngModel)]="email" placeholder="Enter your email" required />
+
+        <div class="Verify_container">
+          <button (click)="otpSent ? verifyOtp() : sendOtp()">
+            {{ otpSent ? 'Verify OTP' : 'Send OTP' }}
+          </button>
+
+          <div class="verifyOtp" *ngIf="otpSent">
+            <input type="text" [(ngModel)]="otp" placeholder="Enter OTP" />
+          </div>
+
+         <button (click)="cancel()" class="cancel-button">Cancel</button>
+        </div>
+        
+
+        <p *ngIf="message">{{ message }}</p>
+
+      </div>
+    
+         
+    </div>
+      
+  </div>
+</div>
