@@ -29,7 +29,7 @@ export const routes: Routes = [
   // <--------------------- User Auth Routes --------------------->
 
   {
-    path: 'signup',
+    path: 'signup/:storeType',
     pathMatch: 'full',
     loadComponent: () => {
       return import('./Pages/Authentication/sign-up/sign-up.component').then(

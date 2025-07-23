@@ -15,12 +15,12 @@ export class LandingNavComponent {
     const selectedStore = (event.target as HTMLSelectElement).value;
 
     if (
-      selectedStore == 'grocery' ||
-      selectedStore == 'hardware' ||
-      selectedStore == 'electronics' ||
+      selectedStore == 'Grocery' ||
+      selectedStore == 'Hardware' ||
+      selectedStore == 'Electronics' ||
       selectedStore == 'signup'
     ) {
-      this.router.navigate(['/signup']);
+      this.router.navigate(['/signup',selectedStore]);
      // this.router.navigate(['/verifyEmail']);
     } else {
       this.router.navigate(['/login']);
