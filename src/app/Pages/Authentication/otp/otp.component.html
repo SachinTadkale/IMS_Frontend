@@ -1,27 +1,39 @@
 <div class="container">
+  <!-- Spinner Overlay -->
+ 
+  <div class="loading-overlay" *ngIf="isLoading">
+    <div class="dot-loader">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
   <div class="otp-container">
     <div class="header">
       <div class="title">Verify Your Email</div>
+      <div class="sub-heading">Please enter your email to receive an OTP</div>
     </div>
-    <input
-      type="email"
-      [(ngModel)]="email"
-      placeholder="Enter your email"
-      required
-    />
-
+    <div class="send-otp-container">
+      <div class="email-container">
+        <input
+          type="email"
+          [(ngModel)]="email"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+      <div class="btn-container">
+        <button (click)="sendOtp()" id="send-btn">Send OTP</button>
+      </div>
+    </div>
     <div class="Verify_container">
       <div class="verifyOtp">
         <input type="text" [(ngModel)]="otp" placeholder="Enter OTP" />
       </div>
       <div class="btn-container">
-        <button
-          (click)="otpSent ? verifyOtp() : sendOtp()"
-          [disabled]="isLoading || otpSent"
-          id="verify-btn"
-        >
-          {{ otpSent ? "Verify OTP" : "Send OTP" }}
-        </button>
+        <button (click)="verifyOtp()" id="verify-btn">Verify OTP</button>
       </div>
     </div>
     <div class="cancel-btn">

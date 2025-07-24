@@ -1,6 +1,5 @@
 <div class="container">
   <div class="signup-container">
-
     <div class="signup-left-container">
       <img src="../../../assets/signup.png" alt="This is Image" width="350px" />
     </div>
@@ -14,39 +13,73 @@
       <div class="signup-form">
         <form #f="ngForm" (ngSubmit)="OnSignUp()">
           <!-- Full Name -->
-          <input type="text" name="full_name" placeholder="Enter Name" [(ngModel)]="signupData.full_name"
-            #fullName="ngModel" required />
-          <div class="signup-alert" *ngIf="fullName.touched && fullName.invalid">
+          <input
+            type="text"
+            name="full_name"
+            placeholder="Enter Name"
+            [(ngModel)]="signupData.full_name"
+            #fullName="ngModel"
+            required
+          />
+          <div
+            class="signup-alert"
+            *ngIf="fullName.touched && fullName.invalid"
+          >
             <small>Name is required.</small>
           </div>
 
           <!-- Email -->
           <div class="email-otp-wrapper">
-            <input type="email" name="email" placeholder="Enter Email" [(ngModel)]="signupData.email" />
-            <div *ngIf="emailVerified" style="color: green; margin-bottom: 10px;">
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter Email"
+              [(ngModel)]="signupData.email"
+            />
+            <div
+              *ngIf="emailVerified"
+              style="color: green; margin-bottom: 10px"
+            >
               Email Verified ✅
             </div>
-            <button *ngIf="!emailVerified" type="button" class="sendOtp-btn" (click)="sendOtp()"
-              [disabled]="emailVerified">
+            <button
+              *ngIf="!emailVerified"
+              type="button"
+              class="sendOtp-btn"
+              (click)="sendOtp()"
+              [disabled]="emailVerified"
+            >
               Send OTP
             </button>
-
           </div>
 
           <!-- Password -->
           <div class="password-wrapper">
-            <input [type]="showPassword ? 'text' : 'password'" name="password" placeholder="Password"
-              [(ngModel)]="signupData.password" #password="ngModel" required
-              pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" />
-            <i class="toggle-password fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
-              (click)="togglePasswordVisibility()"></i>
-
-
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              name="password"
+              placeholder="Password"
+              [(ngModel)]="signupData.password"
+              #password="ngModel"
+              required
+              pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+            />
+            <i
+              class="toggle-password fa"
+              [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+              (click)="togglePasswordVisibility()"
+            ></i>
           </div>
-          <div class="signup-alert" *ngIf="password.touched && password.errors?.['required']">
+          <div
+            class="signup-alert"
+            *ngIf="password.touched && password.errors?.['required']"
+          >
             <small>Password is required.</small>
           </div>
-          <div class="signup-alert" *ngIf="password.touched && password.errors?.['pattern']">
+          <div
+            class="signup-alert"
+            *ngIf="password.touched && password.errors?.['pattern']"
+          >
             <small>
               Password must contain:
               <ul>
@@ -59,27 +92,40 @@
 
           <!-- Confirm Password -->
           <div class="password-wrapper">
-            <input [type]="showConfirmPassword ? 'text' : 'password'" name="confirm_password"
-              placeholder="Confirm Password" [(ngModel)]="confirm_password" #confirmPwd="ngModel" required />
-            <i class="toggle-password fa" [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"
-              (click)="toggleConfirmPasswordVisibility()"></i>
+            <input
+              [type]="showConfirmPassword ? 'text' : 'password'"
+              name="confirm_password"
+              placeholder="Confirm Password"
+              [(ngModel)]="confirm_password"
+              #confirmPwd="ngModel"
+              required
+            />
+            <i
+              class="toggle-password fa"
+              [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"
+              (click)="toggleConfirmPasswordVisibility()"
+            ></i>
           </div>
-          <div class="signup-alert" *ngIf="confirmPwd.touched && confirmPwd.errors?.['required']">
+          <div
+            class="signup-alert"
+            *ngIf="confirmPwd.touched && confirmPwd.errors?.['required']"
+          >
             <small>Confirm password is required.</small>
           </div>
-          <div class="signup-alert" *ngIf="
+          <div
+            class="signup-alert"
+            *ngIf="
               confirmPwd.touched &&
               signupData.password &&
               confirm_password &&
               signupData.password !== confirm_password
-            ">
+            "
+          >
             <small>Passwords do not match.</small>
           </div>
 
           <!-- Submit Button -->
-          <button type="submit" id="signup-btn" >
-            SignUp
-          </button>
+          <button type="submit" id="signup-btn">SignUp</button>
           <!---[disabled]="f.invalid || signupData.password !== confirm_password"-->
 
           <p class="footer-text" style="text-align: center">
@@ -97,21 +143,29 @@
       </div>
     </div>
 
-<!-- verify otp overlay -->
- <div class="otp_overlay" *ngIf="otpSent && !emailVerified">
-        <div class="verifyOtp_form">
+    <!-- verify otp overlay -->
+    <div class="otp_overlay" *ngIf="otpSent && !emailVerified">
+      <div class="verifyOtp_form">
+        <h3>Verify OTP</h3>
 
-          <h3>Verify OTP</h3>
+        <input
+          type="text"
+          id="otp"
+          name="otp"
+          [(ngModel)]="otp"
+          required
+          placeholder="Enter the OTP sent to your email"
+        />
 
-          <input type="text" id="otp" name="otp" [(ngModel)]="otp" required placeholder="Enter the OTP sent to your email" />
-
-          <div class="verifyOtp_form_btn">
-            <button type="button" class="verifyOtp_btn" (click)="verifyOtp()">Verify OTP</button>
-            <button type="button" class="verifyOtp_btn" (click)="cancel()">Cancel</button>
-          </div>
-
+        <div class="verifyOtp_form_btn">
+          <button type="button" class="verifyOtp_btn" (click)="verifyOtp()">
+            Verify OTP
+          </button>
+          <button type="button" class="verifyOtp_btn" (click)="cancel()">
+            Cancel
+          </button>
         </div>
       </div>
+    </div>
   </div>
 </div>
-

@@ -73,6 +73,7 @@
   display: flex;
   position: relative;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 #nav {
@@ -94,6 +95,8 @@ li {
   text-decoration: none;
   font-weight: 500;
   cursor: pointer;
+  padding-bottom: .2em;
+  transition: all 0.2s ease-in-out;
 }
 
 li::after,
@@ -104,15 +107,26 @@ li::after,
   bottom: 0;
   width: 0;
   background-color: #333;
-  height: 3px;
+  height: 2px;
   transition: all 0.2s ease-in-out;
   transform: translateX(-50%);
 }
 
-li:hover::after,
+li:hover::after{
+  border-radius: 10px;
+  width: 100%;
+  background-color: #0bd9b3;
+}
+li:hover{
+  color: #0bd9b3;
+}
 #box #Addtocart:hover::after {
   border-radius: 10px;
   width: 100%;
+  background-color: #3598DB;
+}
+#box #Addtocart:hover{
+  color: #3598DB;
 }
 
 option {

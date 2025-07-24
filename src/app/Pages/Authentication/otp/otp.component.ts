@@ -24,16 +24,18 @@ export class OtpComponent {
   ) {}
 
   sendOtp() {
+    this.isLoading = true;
+
     this.otpService.sendOtp(this.email).subscribe({
       next: (response) => {
         this.otpSent = true;
-        alert("OTP sent Successfully on Your Email");
+        alert('OTP sent Successfully on Your Email');
+        this.isLoading = false;
       },
       error: (err) => {
+        this.isLoading = false;
         if (err.status === 404) {
           alert('Email not found');
-        } else if (err.status === 401) {
-          alert('Invalid OTP');
         } else {
           alert('Something went wrong. Please try again.');
         }
@@ -42,22 +44,28 @@ export class OtpComponent {
   }
 
   verifyOtp() {
-  this.otpService.verifyOtp(this.email, this.otp).subscribe({
-    next: (response) => {
-      if (response.success) {
-        alert("Email Verified Successfully");
-        this.router.navigate(['/forgot-password']);
-      } else {
-        alert("Invalid OTP or verification failed.");
-      }
-    },
-    error: (err) => {
-      console.error('OTP verification error:', err);
-      alert("Something went wrong. Please try again.");
-    }
-  });
-}
+    console.log('Verifying OTP with:', this.email, this.otp);
 
+    this.otpService.verifyOtp(this.email, this.otp).subscribe({
+      next: () => {
+        alert('Email Verified Successfully');
+        console.log('Navigating to: ', `/forgot-password/${this.email}`);
+        this.router.navigate(['/forgot-password', this.email]);
+
+        console.log(this.email);
+      },
+      error: (err) => {
+        console.error('OTP verification error:', err);
+        if (err.status === 404) {
+          alert('Email not found.');
+        } else if (err.status === 401) {
+          alert('Invalid or expired OTP.');
+        } else {
+          alert('Something went wrong. Please try again.');
+        }
+      },
+    });
+  }
 
   cancel() {
     this.email = '';

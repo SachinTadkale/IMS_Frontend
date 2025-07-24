@@ -1,24 +1,36 @@
 <div id="nav-container">
   <div id="navbar">
-    <div id="logo"><img src="../../../../assets/logos/inventory-black.png" alt=""> <h5>Inventory Management System</h5></div>
+    <div class="left-container">
+    <div id="logo">
+      <img src="../../../../assets/logos/inventory-black.png" alt="" />
+      <h5>Inventory Management System</h5>
+    </div>
     <div id="input">
-      <img src="../../../../assets/logos/search.png" width="30px" height="30px" id="search-logo">
+      <img
+        src="../../../../assets/logos/search.png"
+        width="30px"
+        height="30px"
+        id="search-logo"
+      />
       <input type="search" placeholder="Search..." id="search_bar" />
-      <!-- <input type="submit" value="search" id="search_btn"> -->
     </div>
     <div id="box">
       <div id="Addtocart">Add to cart</div>
       <div id="basket"><img src="../../../../assets/cart.png" id="cart" /></div>
     </div>
-    <button id="login-btn" routerLink="/login">Login</button>
-
+    </div>
+    <div class="right-container">
+    <div class="login-btn-container">
+      <button id="login-btn" routerLink="/login">LogIn</button>
+    </div>
+    </div>
   </div>
 
   <!--navbar starts  -->
   <div id="nav">
     <ul>
       <li id="select-store">
-        <img src="../../../../assets/logos/windows.png" alt="" width="25px">
+        <img src="../../../../assets/logos/windows.png" alt="" width="25px" />
         <select name="store-type" id="store-type" (change)="navigate($event)">
           <option value="" selected disabled>All Store</option>
           <option value="Grocery">Grocery</option>
@@ -31,20 +43,18 @@
       <li>Categories</li>
       <li>Store</li>
       <li>Dashboard</li>
-      
-  <li>
-  <select
-    name="admin-auth"
-    id="admin-auth"
-    (change)="navigateAdmin($event)"
-  >
-    <option value="" selected disabled>Admin</option>
-    <option value="adminSignup">Signup</option>
-    <option value="adminLogin">Login</option>
-  </select>
-</li>
 
-
+      <li>
+        <select
+          name="admin-auth"
+          id="admin-auth"
+          (change)="navigateAdmin($event)"
+        >
+          <option value="" selected disabled>Admin</option>
+          <option value="adminSignup">SignUp</option>
+          <option value="adminLogin">LogIn</option>
+        </select>
+      </li>
     </ul>
   </div>
   <!-- navbar ends -->

@@ -1,59 +1,72 @@
-<div class="container" *ngIf="!isEmailExist">
-    <div class="login-container">
-        <div class="login-left-container">
-            <img src="../../../../assets/signin.png" alt="This is Image" width="350px" />
-        </div>
-        <div class="login-right-container">
-            <div class="title">
-                <h1>Verify Your email</h1>
-                <p> Verify email is exist in our system.</p>
-            </div>
-            <div class="login-form">
-                <form (ngSubmit)="verifyEmail()">
-                    <input type="text" name="email" placeholder="Enter Email" [(ngModel)]="loginData.username"
-                        required />
+<div class="container">
+  <div class="forgot-password-container">
+    <div class="title">Create Your New Password</div>
+    <div class="form-container">
+      <form #resetForm="ngForm" (ngSubmit)="resetPassword()" novalidate>
 
-                    
-                    <button type="submit" id="login-btn">Verify</button>
-                    <p id="register">
-                        Didn't Register?
-                        <a id="signup-page" routerLink="/signup">Register Here</a>
-                    </p>
-                </form>
-            </div>
+        <!-- New Password -->
+        <div class="password-wrapper">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            name="password"
+            [(ngModel)]="password"
+            #pwd="ngModel"
+            placeholder="New Password"
+            required
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$"
+          />
+          <i
+            class="toggle-password fa"
+            [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="togglePasswordVisibility()"
+          ></i>
         </div>
+
+        <div class="signup-alert" *ngIf="pwd.touched && pwd.invalid">
+          <small *ngIf="pwd.errors?.['required']">Password is required.</small>
+          <small *ngIf="pwd.errors?.['pattern']">
+            Password must contain:
+            <ul>
+              <li>Minimum 8 characters</li>
+              <li>At least 1 uppercase and 1 lowercase letter</li>
+              <li>At least 1 number</li>
+              <li>At least 1 special character ($!%*?&)</li>
+            </ul>
+          </small>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="password-wrapper">
+          <input
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            name="confirmPassword"
+            [(ngModel)]="confirmPassword"
+            #confirmPwd="ngModel"
+            placeholder="Confirm Password"
+            required
+          />
+          <i
+            class="toggle-password fa"
+            [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="toggleConfirmPasswordVisibility()"
+          ></i>
+        </div>
+
+        <div class="signup-alert" *ngIf="confirmPwd.touched && confirmPwd.invalid">
+          <small *ngIf="confirmPwd.errors?.['required']">Confirm password is required.</small>
+        </div>
+
+        <div class="signup-alert" *ngIf="confirmPwd.touched && password && confirmPassword && password !== confirmPassword">
+          <small>Passwords do not match.</small>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="btn-container">
+          <button type="submit" [disabled]="resetForm.invalid">
+            Change Password
+          </button>
+        </div>
+      </form>
     </div>
-</div>
-
-<div class="container" *ngIf="isEmailExist">
-    <div class="login-container">
-        <div class="login-left-container">
-            <img src="../../../../assets/signin.png" alt="This is Image" width="350px" />
-        </div>
-        <div class="login-right-container">
-            <div class="title">
-                <h1>Welcome Back!</h1>
-                <p> Sign in to manage your Inventory.</p>
-            </div>
-            <div class="login-form">
-                <form (ngSubmit)="onLogin()">
-                    <input type="text" name="email" placeholder="Enter Email" [(ngModel)]="loginData.username"
-                        required />
-
-                    <div class="password-wrapper">
-                        <input [type]="showPassword ? 'text' : 'password'" name="password" placeholder="Password"
-                            [(ngModel)]="loginData.password" required />
-                        <i class="toggle-password fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
-                            (click)="togglePasswordVisibility()"></i>
-                    </div>
-
-                    <button type="submit" id="login-btn">Log In</button>
-                    <p id="register">
-                        Didn't Register?
-                        <a id="signup-page" routerLink="/signup">Register Here</a>
-                    </p>
-                </form>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>

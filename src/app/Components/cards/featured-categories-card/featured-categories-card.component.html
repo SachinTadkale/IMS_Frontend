@@ -34,13 +34,13 @@
       </ng-template>
     </div>
     <div class="featured-product-bottom">
-      <div
-        class="custom-checkbox"
+      <button
+        class="add-to-cart-btn"
         [class.checked]="isProductSelected(product.product_id)"
         (click)="toggleProductSelection(product)"
       >
         {{ isProductSelected(product.product_id) ? 'Added' : 'Add to Cart' }}
-      </div>
+      </button>
     </div>
   </div>
 </div>

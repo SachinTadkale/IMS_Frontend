@@ -8,36 +8,43 @@ export interface AuthRequest {
   password: string;
 }
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthenticationService {
-
   private baseUrl = 'http://localhost:8080/api';
 
   constructor(private http: HttpClient) {}
 
-   sendOtp(email: string): Observable<any> {
+  sendOtp(email: string): Observable<any> {
     const params = new HttpParams().set('email', email);
     return this.http.post(`${this.baseUrl}/sendOtp`, null, { params });
   }
 
   verifyOtp(email: string, otp: string): Observable<any> {
-    const params = new HttpParams()
-      .set('email', email)
-      .set('otp', otp);
+    const params = new HttpParams().set('email', email).set('otp', otp);
+
     return this.http.post(`${this.baseUrl}/verifyOtp`, null, { params });
   }
 
   register(user: UserData): Observable<any> {
-    return this.http.post(`${this.baseUrl}/register`, user, { responseType: 'json' });
+    return this.http.post(`${this.baseUrl}/register`, user, {
+      responseType: 'json',
+    });
   }
-
 
   login(authRequest: AuthRequest): Observable<string> {
-    return this.http.post(`${this.baseUrl}/login`, authRequest, { responseType: 'text' });
+    return this.http.post(`${this.baseUrl}/login`, authRequest, {
+      responseType: 'text',
+    });
   }
-  
+
+  resetPassword(email: string, newPassword: string): Observable<any> {
+  const params = new HttpParams()
+    .set('email', email)
+    .set('newPassword', newPassword);
+
+  return this.http.put(`${this.baseUrl}/reset-password`, null, { params });
+}
 
 }

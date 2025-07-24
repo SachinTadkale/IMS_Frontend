@@ -14,14 +14,11 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent implements OnInit {
-
-
-
-  emailVerified:boolean=false;
+  emailVerified: boolean = false;
   otp: any;
-otpSent:boolean=true;
+  otpSent: boolean = true;
   isLoading: boolean = false;
-  
+
   signupData: UserData = {
     full_name: '',
     email: '',
@@ -37,8 +34,8 @@ otpSent:boolean=true;
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router,
-    private route:ActivatedRoute,
-    private otpService:AuthenticationService
+    private route: ActivatedRoute,
+    private otpService: AuthenticationService
   ) {
     const nav = history.state;
     this.signupData.email = nav.email;
@@ -47,14 +44,13 @@ otpSent:boolean=true;
   ngOnInit(): void {
     const storeType = this.route.snapshot.paramMap.get('storeType');
     console.log('Received ID:', storeType);
-    if(storeType!=null){
+    if (storeType != null) {
       this.signupData.store_type = storeType;
     }
   }
 
-sendOtp() {
-
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  sendOtp() {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
     if (!this.signupData.email) {
       alert('Please enter your email.');
@@ -75,15 +71,15 @@ sendOtp() {
       error: () => {
         alert('Failed to send OTP.');
         this.isLoading = false;
-      }
+      },
     });
-}
+  }
 
-cancel() {
-this.otpSent=false;
-}
+  cancel() {
+    this.otpSent = false;
+  }
 
-verifyOtp() {
+  verifyOtp() {
     if (!this.otp) {
       alert('OTP is required.');
       return;
@@ -94,11 +90,10 @@ verifyOtp() {
         this.isLoading = false;
         this.emailVerified = true;
         alert(response.message);
-
       },
       error: () => {
         alert('Invalid OTP.');
-      }
+      },
     });
   }
 

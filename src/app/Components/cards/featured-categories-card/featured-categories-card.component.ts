@@ -76,6 +76,10 @@ export class FeaturedCategoriesCardComponent implements OnInit {
       const gstAmount = netAmount * product.gst_rate / 100;
       const totalAmount = netAmount + gstAmount;
       const imgurl = this.productService.getImageUrl(product.product_id);
+      if(confirm("Do You Want To View Your Cart?"))
+      {
+        this.router.navigate(['electronics-myCart']);
+      }
       this.cartService.addToCart({
         id: product.product_id,
         imgurl:imgurl,
