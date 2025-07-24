@@ -192,3 +192,88 @@ select {
   /* transform: scale(1.2); */
   color: #000;
 }
+
+/* email verify button */
+.email-otp-wrapper button {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  background-color:#00796b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.email-otp-wrapper button:hover:not([disabled]) {
+  background-color: #218838;
+}
+
+.email-otp-wrapper button[disabled] {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+.otp_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(125, 118, 118, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+}
+
+.verifyOtp_form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 200px;
+  background-color: white;
+  padding: 7px;
+  box-shadow: 5px 5px 5px gray;
+  border:1px solid gray;
+  border-radius: 10px;
+}
+
+.verifyOtp_form input{
+  margin: 15px;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.verifyOtp_form button{
+  margin: 20px;
+  width: 100px;
+  height: 50px;
+}
+button[disabled] {
+  background-color: #00796b;
+  cursor: not-allowed;
+}
+
+button:hover:not([disabled]) {
+  background-color: #0056b3;
+}
+#signup-btn[disabled] {
+  background-color: #00796b;
+  cursor: not-allowed;
+}
+
+.verifyOtp_form_btn{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+}
+
