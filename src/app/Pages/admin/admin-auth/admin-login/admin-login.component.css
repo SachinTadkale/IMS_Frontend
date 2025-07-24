@@ -80,3 +80,18 @@ input{
   width: 100%;
   cursor: pointer;
 }
+
+
+#reset-password {
+  color: #1e1e1e;
+  margin-top: 0.5em;
+  font-size: 0.9em;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+#reset-password:hover {
+  color: #0bd9b3;
+  text-decoration: underline;
+  cursor: pointer;
+}

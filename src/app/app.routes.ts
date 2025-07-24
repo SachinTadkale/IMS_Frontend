@@ -11,6 +11,8 @@ import { SellersComponent } from './Pages/Electronics-Store/UserDashboard/Sectio
 import { SubscriptionComponent } from './Pages/Authentication/subscriptions/subscription/subscription.component';
 import { CentralLandingComponent } from './Pages/CentralLanding/central-landing/central-landing.component';
 import { LandingPageComponent } from './Pages/landing-page/landing-page.component';
+import { ForgotpassComponent } from './Pages/Authentication/forgotpass/forgotpass.component';
+
 
 export const routes: Routes = [
   {
@@ -90,6 +92,22 @@ export const routes: Routes = [
       ).then((m) => m.AdminLoginComponent);
     },
   },
+{
+  path: 'reset-password/:role',
+  loadComponent: () =>
+    import('./Pages/admin/admin-auth/reset-password/reset-password.component').then(
+      m => m.ResetPasswordComponent
+    )
+},
+
+
+{
+  path: 'adminSignup',
+  loadComponent: () =>
+    import('./Pages/admin/admin-auth/admin-signup/admin-signup.component').then(
+      (m) => m.AdminSignupComponent
+    )
+},
   {
     path: 'adminDashboard',
     pathMatch: 'full',
@@ -265,6 +283,9 @@ export const routes: Routes = [
       )
     }
   },
+  {
+    path:'forgetPass', component:ForgotpassComponent
+  }
   // <--------------------- Grocery Store Routes --------------------->
 
   // <--------------------- Industrial Store Routes --------------------->

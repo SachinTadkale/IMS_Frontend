@@ -10,6 +10,8 @@
       <div id="Addtocart">Add to cart</div>
       <div id="basket"><img src="../../../../assets/cart.png" id="cart" /></div>
     </div>
+    <button id="login-btn" routerLink="/login">Login</button>
+
   </div>
 
   <!--navbar starts  -->
@@ -29,18 +31,20 @@
       <li>Categories</li>
       <li>Store</li>
       <li>Dashboard</li>
-      <li>
-        <select
-          name="signup-login"
-          id="signup-login"
-          (change)="navigate($event)"
-        >
-          <option value="" selected disabled>Account</option>
-          <option value="signup">SignUp</option>
-          <option value="login" (click)="logOut()">LogIn</option>
-        </select>
-      </li>
-      <li routerLink="/adminLogin">Admin Login</li>
+      
+  <li>
+  <select
+    name="admin-auth"
+    id="admin-auth"
+    (change)="navigateAdmin($event)"
+  >
+    <option value="" selected disabled>Admin</option>
+    <option value="adminSignup">Signup</option>
+    <option value="adminLogin">Login</option>
+  </select>
+</li>
+
+
     </ul>
   </div>
   <!-- navbar ends -->

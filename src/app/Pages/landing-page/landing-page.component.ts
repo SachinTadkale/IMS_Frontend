@@ -18,6 +18,7 @@ export class LandingPageComponent implements OnInit {
   ngOnInit(): void {
       if (localStorage.getItem('token')){
 
+        
         console.log("token exist");
         this.router.navigate(['/electronics-store-home']);
 
