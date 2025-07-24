@@ -11,6 +11,8 @@ import { SellersComponent } from './Pages/Electronics-Store/UserDashboard/Sectio
 import { SubscriptionComponent } from './Pages/Authentication/subscriptions/subscription/subscription.component';
 import { CentralLandingComponent } from './Pages/CentralLanding/central-landing/central-landing.component';
 import { LandingPageComponent } from './Pages/landing-page/landing-page.component';
+import { ForgotpassComponent } from './Pages/Authentication/forgotpass/forgotpass.component';
+
 
 export const routes: Routes = [
   {
@@ -259,6 +261,9 @@ export const routes: Routes = [
       )
     }
   },
+  {
+    path:'forgetPass', component:ForgotpassComponent
+  }
   // <--------------------- Grocery Store Routes --------------------->
 
   // <--------------------- Industrial Store Routes --------------------->

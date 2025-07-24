@@ -40,14 +40,10 @@
           <button type="submit" id="login-btn">Log In</button>
           <p id="register">
             Didn't Register?
-            <a id="signup-page" [routerLink]="['/signup', 'electronics']">Register Here</a>
+            <a id="signup-page" routerLink="/signup">Register Here</a>
+            <a routerLink="/forgetPass"> Forget Password</a>
           </p>
-
-         <p id="forgot-password">
-            <a [routerLink]="['/reset-password', 'user']">Forgot Password?</a>
-
-          </p>
-
+          
         </form>
       </div>
     </div>
