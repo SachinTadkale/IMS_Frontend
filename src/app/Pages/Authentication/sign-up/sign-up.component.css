@@ -12,14 +12,12 @@
   display: flex;
   align-items: center;
   width: 60vw;
-  height: 80vh; 
+  height: 80vh;
   padding: 3em 4em;
   justify-content: space-between;
   background-color: #cafaff;
-  
- 
   transition: width 0.3s ease-in-out;
-
+  min-width: calc(25vw + 10vw);
 }
 
 .signup-left-container {
@@ -45,6 +43,7 @@
   gap: 1em;
 }
 
+/* Consistent styling for inputs and selects */
 input,
 select {
   background-color: transparent;
@@ -52,42 +51,27 @@ select {
   border: 2px solid #64dce2;
   border-radius: 7px;
   height: 40px;
-}
-
-input,
-select {
   padding: 0.5em 0.75em;
   font-size: 1em;
   transition: all 0.3s ease-in-out;
   margin: 0;
-  border-radius: 7px;
   box-sizing: border-box;
 }
-.signup-container {
-  min-width: calc(25vw + 10vw);
-}
 
+/* Submit button */
 #signup-btn {
   margin: auto;
   background-color: #00abbe;
   color: #f5f5f5;
   font-size: 1.1em;
   width: 17.5vw;
+  padding: 7px 0;
+  border-radius: 5px;
+  border: 2px solid #64dce2;
+  outline: none;
   font-weight: 600;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
-}
-
-.verifyOtp{
-  display: flex;
-  flex-direction: row;
-  gap:20px;
-}
-.sendOtp_btn{
-  width: 100px;
-  height: 50px;
-  background-color: green;
-  color: white;
 }
 
 #signup-btn:hover,
@@ -95,6 +79,25 @@ select {
   background-color: #007a87;
 }
 
+/* OTP Section */
+.verifyOtp {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.sendOtp_btn {
+  width: 100px;
+  height: 40px; /* Match input height */
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+/* Login Page Link */
 #login-page {
   text-decoration: none;
   color: black;
@@ -120,12 +123,15 @@ select {
   width: 100%;
 }
 
-#login-page:hover,.signup-footer a:hover {
+#login-page:hover,
+.signup-footer a:hover {
   color: #0bd9b3;
 }
-.footer-text{
+
+.footer-text {
   font-weight: 300;
 }
+
 .signup-footer {
   font-size: 0.85em;
 }
@@ -135,7 +141,7 @@ select {
   position: relative;
   text-decoration: none;
   color: #000;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .signup-footer a::after {
@@ -159,6 +165,7 @@ select {
   margin-left: 10px;
   color: red;
 }
+
 .signup-alert ul {
   text-decoration: none;
   list-style: none;
@@ -174,11 +181,11 @@ select {
 .password-wrapper input {
   width: 100%;
   padding-right: 40px; /* space for icon */
-  height: 6vh;
+  height: 40px; /* Match all other inputs */
   padding-left: 10px;
 }
 
-.toggle-password{
+.toggle-password {
   padding-right: 20px;
   position: absolute;
   right: 10px;
@@ -189,6 +196,5 @@ select {
 }
 
 .toggle-password:hover {
-  /* transform: scale(1.2); */
   color: #000;
 }

@@ -14,8 +14,6 @@ export class ElectronicsNavComponent {
   constructor(private router: Router, private authenticationService: AuthenticationService){}
 
   logOut(){
-   
-      // Optionally, clear token from localStorage or sessionStorage
       localStorage.removeItem('token');
       // Redirect to login page
       this.router.navigate(['/public-landing']);

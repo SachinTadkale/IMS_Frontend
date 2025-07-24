@@ -41,8 +41,21 @@ export const routes: Routes = [
     },
   },
   {
+    path: 'signup',
+    pathMatch: 'full',
+    loadComponent: () => {
+      return import('./Pages/Authentication/sign-up/sign-up.component').then(
+        (m) => m.SignUpComponent
+      );
+    },
+  },
+  {
     path: 'verifyEmail',
-    component: OtpComponent,
+    loadComponent:()=>{
+      return import('./Pages/Authentication/otp/otp.component').then(
+        (m)=>m.OtpComponent
+      )
+    },
   },
   {
     path: 'login',
@@ -52,6 +65,15 @@ export const routes: Routes = [
         (m) => m.LoginComponent
       );
     },
+  },
+  {
+    path:'forgot-password',
+    pathMatch:'full',
+    loadComponent:()=>{
+      return import('./Pages/Authentication/forgot-password/forgot-password.component').then(
+        (m)=>m.ForgotPasswordComponent
+      )
+    }
   },
   // <--------------------- Profile Routee --------------------->
 

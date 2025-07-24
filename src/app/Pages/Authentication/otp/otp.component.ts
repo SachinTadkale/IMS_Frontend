@@ -7,50 +7,62 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-otp',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './otp.component.html',
-  styleUrl: './otp.component.css'
+  styleUrl: './otp.component.css',
 })
 export class OtpComponent {
-
-    email: string = '';
+  email: string = '';
   otp: string = '';
   otpSent: boolean = false;
   message: string = '';
+  isLoading: boolean = false;
 
-  constructor(private otpService: AuthenticationService, private router: Router) {}
+  constructor(
+    private otpService: AuthenticationService,
+    private router: Router
+  ) {}
 
   sendOtp() {
     this.otpService.sendOtp(this.email).subscribe({
       next: (response) => {
         this.otpSent = true;
-        this.message = response.message;
+        alert("OTP sent Successfully on Your Email");
       },
-      error: () => {
-        this.message = 'Failed to send OTP.';
-      }
+      error: (err) => {
+        if (err.status === 404) {
+          alert('Email not found');
+        } else if (err.status === 401) {
+          alert('Invalid OTP');
+        } else {
+          alert('Something went wrong. Please try again.');
+        }
+      },
     });
   }
 
   verifyOtp() {
-    this.otpService.verifyOtp(this.email, this.otp).subscribe({
-      next: (response) => {
-        this.message = response.message;
-         // Navigate and pass data using router state
-      this.router.navigate(['/signup'], { state: { email: this.email } });
-      },
-      error: () => {
-        this.message = 'Invalid OTP.';
+  this.otpService.verifyOtp(this.email, this.otp).subscribe({
+    next: (response) => {
+      if (response.success) {
+        alert("Email Verified Successfully");
+        this.router.navigate(['/forgot-password']);
+      } else {
+        alert("Invalid OTP or verification failed.");
       }
-    });
-  }
-
-  cancel() {
-  this.email = '';
-  this.otp = '';
-  this.otpSent = false;
-  this.message = '';
+    },
+    error: (err) => {
+      console.error('OTP verification error:', err);
+      alert("Something went wrong. Please try again.");
+    }
+  });
 }
 
 
+  cancel() {
+    this.email = '';
+    this.otp = '';
+    this.otpSent = false;
+    this.message = '';
+  }
 }
