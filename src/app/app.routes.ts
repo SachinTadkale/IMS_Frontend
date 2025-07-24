@@ -68,6 +68,22 @@ export const routes: Routes = [
       ).then((m) => m.AdminLoginComponent);
     },
   },
+{
+  path: 'reset-password/:role',
+  loadComponent: () =>
+    import('./Pages/admin/admin-auth/reset-password/reset-password.component').then(
+      m => m.ResetPasswordComponent
+    )
+},
+
+
+{
+  path: 'adminSignup',
+  loadComponent: () =>
+    import('./Pages/admin/admin-auth/admin-signup/admin-signup.component').then(
+      (m) => m.AdminSignupComponent
+    )
+},
   {
     path: 'adminDashboard',
     pathMatch: 'full',

@@ -1,0 +1,85 @@
+/* Container to center everything */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Form wrapper */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main card/container */
+.signup-container {
+  padding: 1em 0;
+  display: flex;
+  background-color: #cafaff;
+  border: 2px solid #0bd9b3;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 32vw;
+  max-height: 100%;
+  backdrop-filter: blur(20px);
+  border-radius: 15px;
+  box-shadow: 0 0 10px #0bd9b361;
+}
+
+/* Input fields */
+input {
+  border: 3px solid #0bd9b3;
+  border-radius: 7px;
+  font-size: 0.9em;
+  margin: 0.4em;
+  width: 18vw;
+  height: 4vh;
+  background-color: #f5f5f5;
+  padding: 0 15px;
+  outline: none;
+}
+
+/* Button styles (Sign Up & Send OTP) */
+button {
+  color: #f5f5f5;
+  border: 3px solid #0bd9b3;
+  border-radius: 7px;
+  font-size: 0.9em;
+  margin: 0.4em;
+  width: 20vw;
+  height: 4vh;
+  background-color: #28E94C;
+  padding: 0 15px;
+  transition: all 0.1s ease-in-out;
+}
+
+button:hover {
+  background-color: #23d243;
+  cursor: pointer;
+}
+
+/* "Enter OTP" + "Verify OTP" line layout */
+.otp-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 0.4em;
+}
+
+/* Adjust individual OTP input */
+.otp-row input {
+  width: 11vw;
+  margin: 0;
+}
+
+/* Adjust Verify OTP button */
+.otp-row button {
+  width: 8vw;
+  height: 4vh;
+  margin: 0;
+  font-size: 0.85em;
+}

@@ -35,4 +35,12 @@ export class LandingNavComponent {
     
     
   }
+  navigateAdmin(event: any) {
+  const value = event.target.value;
+  if (value === 'adminSignup') {
+    this.router.navigate(['/adminSignup']);
+  } else if (value === 'adminLogin') {
+    this.router.navigate(['/adminLogin']);
+  }
+}
 }
