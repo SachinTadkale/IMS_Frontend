@@ -40,7 +40,7 @@ export class LogoutService {
 
   logout() {
     // Remove token / clear session storage
-    localStorage.removeItem('token'); // adjust as needed
+    sessionStorage.removeItem('token'); // adjust as needed
 
     // Navigate to login page
     this.router.navigate(['/login']);

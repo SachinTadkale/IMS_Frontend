@@ -1,0 +1,20 @@
+<div class="profile-container">
+  <div class="profile-card">
+    <img [src]="user.photoUrl" alt="Profile Photo" class="profile-photo">
+    <h2>{{ user.name }}</h2>
+    <p class="username">{{ user.username }} 
+      <span class="edit-icon" (click)="startEdit('username')">✎</span>
+    </p>
+
+    <div class="profile-fields">
+      <div class="field" *ngFor="let key of (user.details | keyvalue)">
+        <div class="label">{{ key.key }}</div>
+        <div class="value">
+          <span *ngIf="editField !== key.key">{{ key.value }}</span>
+          <input *ngIf="editField === key.key" [(ngModel)]="user.details" />
+          <span class="edit-icon" (click)="startEdit(key.key)">✎</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

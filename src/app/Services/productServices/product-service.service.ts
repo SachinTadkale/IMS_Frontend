@@ -34,7 +34,7 @@ export class ProductService {
   }
 
   getProducts(): Observable<any[]> {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
@@ -43,7 +43,7 @@ export class ProductService {
   }
 
   getProductsByCategory(productCategory: string): Observable<any[]> {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     return this.http.get<any[]>(
       `${this.apiUrl}/products/category/${productCategory}`,
       {
@@ -57,7 +57,7 @@ export class ProductService {
     productData: any,
     imageFile?: File
   ): Observable<any> {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
@@ -91,7 +91,7 @@ export class ProductService {
   }
 
   deleteProduct(productId: number): Observable<any> {
-    const token = localStorage.getItem('token'); // assuming token is stored here
+    const token = sessionStorage.getItem('token'); // assuming token is stored here
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });

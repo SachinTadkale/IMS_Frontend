@@ -14,9 +14,11 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent implements OnInit {
+
+  email:string ='';
   emailVerified: boolean = false;
   otp: any;
-  otpSent: boolean = true;
+  otpSent: boolean = false;
   isLoading: boolean = false;
 
   signupData: UserData = {
@@ -50,19 +52,19 @@ export class SignUpComponent implements OnInit {
   }
 
   sendOtp() {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}/;
 
-    if (!this.signupData.email) {
+    if (!this.email) {
       alert('Please enter your email.');
       return;
     }
 
-    if (!emailPattern.test(this.signupData.email)) {
+    if (!emailPattern.test(this.email)) {
       alert('Email format is invalid.');
       return;
     }
     this.isLoading = true;
-    this.otpService.sendOtp(this.signupData.email).subscribe({
+    this.otpService.sendOtp(this.email).subscribe({
       next: (response) => {
         this.isLoading = false;
         this.otpSent = true;
@@ -85,11 +87,13 @@ export class SignUpComponent implements OnInit {
       return;
     }
     this.isLoading = true;
-    this.otpService.verifyOtp(this.signupData.email, this.otp).subscribe({
+    this.otpService.verifyOtp(this.email, this.otp).subscribe({
       next: (response) => {
         this.isLoading = false;
         this.emailVerified = true;
         alert(response.message);
+        this.otp ='';
+        this.signupData.email = this.email;
       },
       error: () => {
         alert('Invalid OTP.');
@@ -98,19 +102,15 @@ export class SignUpComponent implements OnInit {
   }
 
   OnSignUp() {
-    // Trim all fields
-    this.signupData.full_name = this.signupData.full_name.trim();
-    this.signupData.email = this.signupData.email.trim();
-    this.signupData.store_type = this.signupData.store_type.trim();
-    this.signupData.password = this.signupData.password.trim();
-    this.confirm_password = this.confirm_password.trim();
 
     // Check if all fields are filled
     if (
       this.signupData.full_name &&
-      this.signupData.email &&
+      this.email &&
       this.signupData.password
     ) {
+
+      this.signupData.email = this.email;
       // Check if passwords match
       if (this.signupData.password === this.confirm_password) {
         const signupRequest = {
@@ -121,7 +121,7 @@ export class SignUpComponent implements OnInit {
         this.authenticationService.register(signupRequest).subscribe({
           next: (response) => {
             alert(response.message);
-            this.router.navigate(['/subscription']);
+            this.router.navigate(['/login']);
 
             // Reset fields
             this.signupData = {

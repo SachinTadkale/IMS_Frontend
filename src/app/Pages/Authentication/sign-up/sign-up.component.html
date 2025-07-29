@@ -34,7 +34,7 @@
               type="email"
               name="email"
               placeholder="Enter Email"
-              [(ngModel)]="signupData.email"
+              [(ngModel)]="email"
             />
             <div
               *ngIf="emailVerified"
@@ -167,5 +167,12 @@
         </div>
       </div>
     </div>
+
+     <!-- Spinner -->
+  <div *ngIf="isLoading" class="spinner_overlay">
+    <div class="spinner"></div>
   </div>
+  </div>
+
+  
 </div>

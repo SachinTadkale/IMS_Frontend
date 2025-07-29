@@ -1,63 +1,291 @@
-.container {
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 20px;
-  text-align: center;
+/* Navbar */
+#nav-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFF;
+    color: #333;
+    font-weight: 500;
+    font-size: 1.1em;
+    width: 100%;
 }
 
-h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: #333;
+#navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 1em 0 0 0;
 }
 
-.subtitle {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 20px;
+#input {
+    margin-left: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    border-radius: 8px;
+    border: 2px solid #E6E6E6;
+    background-color: #FFF;
+    width: 350px;
 }
 
-.subscription-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 30px 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+#search-logo {
+    position: absolute;
+    top: 24px;
+    margin-left: 10px;
 }
 
-.subscription-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+#search_bar {
+    position: relative;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    height: 40px;
+    width: 100%;
+    padding: 0 10px 0 43px;
+    color: #373737;
+    font-size: .9em;
+    font-weight: 500;
 }
 
-.subscription-card h2 {
-  margin-bottom: 10px;
-  color: #222;
+#search_bar::placeholder {
+    color: #A7A7A7;
+    font-weight: 400;
+}
+
+#search_btn {
+    width: 120px;
+    height: 35px;
+    margin-left: 5px;
+}
+
+#logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-left: 60px;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+#cart {
+    height: 30px;
+    width: 30px;
+    margin-left: 5px;
+}
+
+#Addtocart {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+#nav {
+    padding-bottom: 5px;
+    width: 100%;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: right;
+    padding: 15px 40px 0 0;
+    gap: 30px;
+}
+
+li {
+    position: relative;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    padding-bottom: .2em;
+    transition: all 0.2s ease-in-out;
+}
+
+li::after,
+#box #Addtocart::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    background-color: #333;
+    height: 2px;
+    transition: all 0.2s ease-in-out;
+    transform: translateX(-50%);
+}
+
+li:hover::after {
+    border-radius: 10px;
+    width: 100%;
+    background-color: #0bd9b3;
+}
+
+li:hover {
+    color: #0bd9b3;
+}
+
+#box #Addtocart:hover::after {
+    border-radius: 10px;
+    width: 100%;
+    background-color: #3598DB;
+}
+
+#box #Addtocart:hover {
+    color: #3598DB;
+}
+
+option {
+    color: #1e1e1e;
+}
+
+#box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 30px;
+}
+
+
+/* card container */
+
+
+.cards-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 2rem;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 220px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .price {
-  margin-bottom: 20px;
-  color: #555;
+    font-size: 1.2rem;
+    color: #007bff;
+    margin: 0.5rem 0;
+}
+
+.description {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.selected {
+    border: 2px solid #28a745;
+    box-shadow: 0 6px 16px rgba(40, 167, 69, 0.4);
+}
+
+
+/* Payment section */
+
+.payment-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.payment-title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #007bff;
+}
+
+.img-scanner {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.payment-amount {
   font-size: 1.2rem;
+  color: #333;
+  margin: 1rem 0;
 }
 
-#googlePayButton {
-  margin: 15px auto;
-}
-
-.subscribe-btn {
-  margin-top: 10px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 6px;
-  cursor: pointer;
+.utr-input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   font-size: 1rem;
-  transition: background-color 0.2s ease;
 }
 
-.subscribe-btn:hover {
-  background-color: #45a049;
+.payment-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn {
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn.primary {
+  background: #007bff;
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: #0056b3;
+}
+
+.btn.secondary {
+  background: #6c757d;
+  color: #fff;
+}
+
+.btn.secondary:hover {
+  background: #495057;
+}
+
+.btn.logout{
+
+    background-color: red;
+    color:white;
 }

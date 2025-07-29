@@ -1,12 +1,43 @@
-<div class="container">
-  <h1>Subscription Page</h1>
-  <p class="subtitle">Subscribe to unlock premium features</p>
+<div id="nav-container">
+  <div id="navbar">
+    <div id="logo">
+      <img src="../../../../assets/logos/inventory-black.png" width="20" height="20" alt="Inventory Logo">
+      <h5>IMS</h5>
+    </div>
 
-  <div class="subscription-card">
-    <h2>Pro Plan</h2>
-    <p class="price">&#8377;3999.99 / Year</p>
+  </div>
 
-    <div id="googlePayButton"></div>
 
+    
+    <button class="btn logout" (click)="logOut()">Log Out</button>
+    
+ 
+</div>
+
+
+<div class="cards-container" *ngIf="!isPlanSelected">
+  <div class="card" *ngFor="let sub of subscriptions" [class.selected]="selectedPlan.title === sub.title">
+    <h2>{{ sub.title }}</h2>
+    <p class="price">{{ sub.price }}</p>
+    <p class="description">{{ sub.description }}</p>
+    <button (click)="selectPlan(sub)">Subscribe</button>
+  </div>
+</div>
+
+
+<div class="payment-container" *ngIf="isPlanSelected">
+  <div *ngIf="qrUrl">
+    <h2 class="payment-title">Scan & Pay</h2>
+    <img class="img-scanner" [src]="qrUrl" alt="QR Code" />
+  </div>
+  <h3 class="payment-amount">Payment Amount: {{selectedPlan.price}}₹</h3>
+
+
+  <label for="utrInput">Add UTR you have recived on your payment app</label>
+  <input class="utr-input" type="text" name="utrInput" [(ngModel)]="utr" placeholder="Enter UTR" />
+
+  <div class="payment-buttons">
+    <button class="btn primary" (click)="createPayment()">Submit</button>
+    <button class="btn secondary" (click)="cancelPayment()">Cancel</button>
   </div>
 </div>

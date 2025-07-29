@@ -14,7 +14,7 @@ export class ReviewService {
 
   // Helper to build headers with token
   private getAuthHeaders(): HttpHeaders {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     return new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
@@ -33,7 +33,7 @@ export class ReviewService {
     if (rating !== null && rating !== undefined) formData.append('rating', rating.toString());
     formData.append('image', imageFile);
 
-    const token = localStorage.getItem('token'); // or sessionStorage
+    const token = sessionStorage.getItem('token'); // or sessionStorage
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });

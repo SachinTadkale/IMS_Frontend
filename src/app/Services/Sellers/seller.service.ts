@@ -12,7 +12,7 @@ export class SellerService {
   constructor(private http: HttpClient) {}
 
   private getAuthHeaders(): HttpHeaders {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     return new HttpHeaders({
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -21,7 +21,7 @@ export class SellerService {
 
 uploadFormData(formData: FormData): Observable<any> {
 
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });

@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
 import { LandingFooterComponent } from './Components/footer/landing-footer/landing-footer.component';
-import { UserProfileComponent } from './Pages/user-profile/user-profile.component';
 import { LandingPageComponent } from './Pages/landing-page/landing-page.component';
 import { ForgotpassComponent } from './Pages/Authentication/forgotpass/forgotpass.component';
+import { UserProfileComponent } from './Pages/UserProfilePage/user-profile/user-profile.component';
+import { authgardGuard } from './authgard.guard';
 
 export const routes: Routes = [
   {
@@ -80,7 +81,6 @@ export const routes: Routes = [
   },
   // <--------------------- Profile Routee --------------------->
 
-  { path: 'userProfile', component: UserProfileComponent },
 
   // <--------------------- Admin Routes --------------------->
 
@@ -127,7 +127,7 @@ export const routes: Routes = [
       return import(
         './Pages/Electronics-Store/electronics-store-home/electronics-store-home.component'
       ).then((m) => m.ElectronicsStoreHomeComponent);
-    },
+    }, canActivate:[authgardGuard]
   },
   {
     path: 'electronics-store-see-more',
@@ -283,7 +283,9 @@ export const routes: Routes = [
       ).then((m) => m.CentralLandingComponent);
     },
   },
-  
+  {
+    path: 'userProfile' , component:UserProfileComponent
+  }
   // <--------------------- Grocery Store Routes --------------------->
 
   // <--------------------- Industrial Store Routes --------------------->
