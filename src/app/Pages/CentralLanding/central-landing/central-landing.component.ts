@@ -29,22 +29,7 @@ export class CentralLandingComponent implements OnInit {
 
   fetchUserData() {
    
-    this.adminService.getUserById().subscribe({
-      next: (response) => {
-        this.userData = response;
-       
-
-        if (response.status === 'ACTIVE') {
-          this.router.navigate(['/electronics-store-home']);
-        } else {
-          console.log(response);
-          this.router.navigate(['/subscription']);
-        }
-      },
-      error: (error) => {
-        console.error('Error fetching user data:', error);
-      }
-    });
+    
   }
 
 }

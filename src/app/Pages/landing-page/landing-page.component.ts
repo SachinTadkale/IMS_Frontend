@@ -16,14 +16,14 @@ export class LandingPageComponent implements OnInit {
   constructor(private router:Router){}
 
   ngOnInit(): void {
-      if (localStorage.getItem('token')){
+      if (localStorage.getItem('imsToken')){
 
         
         console.log("token exist");
         this.router.navigate(['/electronics-store-home']);
 
       }else{
-        console.log("no token");
+        console.log("no token exist");
         
       }
   }

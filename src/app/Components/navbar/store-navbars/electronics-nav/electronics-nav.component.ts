@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../../../../Services/AuthenticationService/authentication.service';
+import { LogoutService } from '../../../../Services/LogoutService/logout.service';
 
 @Component({
   selector: 'app-electronics-nav',
@@ -11,13 +12,11 @@ import { AuthenticationService } from '../../../../Services/AuthenticationServic
 })
 export class ElectronicsNavComponent {
 
-  constructor(private router: Router, private authenticationService: AuthenticationService){}
+  constructor(private router: Router, private authenticationService: AuthenticationService, private logoutService:LogoutService){}
 
   logOut(){
-      localStorage.removeItem('token');
-      // Redirect to login page
-      this.router.navigate(['/public-landing']);
-   
+    
+   this.logoutService.logout();
     
   }
 

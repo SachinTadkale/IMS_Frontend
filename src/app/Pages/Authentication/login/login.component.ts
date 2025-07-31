@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserData } from '../../../model/User-Data';
 import { AdminService } from '../../../Services/AdminService/admin-service.service';
+import { CredentialService } from '../../../Services/credential/credential.service';
 
 @Component({
   selector: 'app-login',
@@ -31,11 +32,12 @@ export class LoginComponent {
   };
 
   showPassword: boolean = false;
+  randomKey:string ='';
 
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router,
-    private fetchuser: AdminService
+    private credentialService: CredentialService
   ) {}
 
   onLogin() {
@@ -43,7 +45,23 @@ export class LoginComponent {
       this.authenticationService.login(this.loginData).subscribe({
         next: (res) => {
           alert('Login Successful!');
-          sessionStorage.setItem("token", res);
+
+         const userKey = localStorage.getItem('username');
+         const paykey = localStorage.getItem('PaymentKey');
+         const imsToken = localStorage.getItem('imsToken');
+
+         if(userKey || paykey || imsToken){
+          localStorage.removeItem('username');
+          localStorage.removeItem('PaymentKey');
+          localStorage.removeItem('imsToken');
+          
+         }
+
+         localStorage.setItem('username',this.loginData.username);
+         localStorage.setItem('imsToken',res);
+       
+
+         
 
           this.fetchUser();
         },
@@ -69,17 +87,22 @@ export class LoginComponent {
   }
 
   fetchUser() {
-    this.fetchuser.getUserById().subscribe({
+    this.authenticationService.getUserById().subscribe({
       next: (respUser: UserData) => {
         this.user = respUser;
 
         // Move navigation here, after user data is fetched
         if (this.user.status === 'ACTIVE') {
+          localStorage.setItem('PaymentKey','ACTIVE');
           this.router.navigate(['/electronics-store-home']);
-          sessionStorage.setItem('PaymentStatus','ACTIVE');
+         
         } else {
+
+
           this.router.navigate(['/subscription']);
         }
+
+
       },
       error: (error) => {
         console.error("Error while fetching user", error);
@@ -91,4 +114,6 @@ export class LoginComponent {
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
+
+ 
 }

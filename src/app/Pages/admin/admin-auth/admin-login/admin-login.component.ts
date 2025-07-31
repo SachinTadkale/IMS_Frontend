@@ -31,7 +31,7 @@ export class AdminLoginComponent {
           alert('Login Successful!');
 
           // Save token to localStorage (or sessionStorage)
-          localStorage.setItem('token', res);
+          localStorage.setItem('adminToken', res);
 
 
           // Navigate to home/dashboard

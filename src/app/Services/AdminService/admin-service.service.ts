@@ -13,7 +13,7 @@ export class AdminService {
 
   // Helper to build headers with token
   private getAuthHeaders(): HttpHeaders {
-    const token = sessionStorage.getItem('token');
+    const token = localStorage.getItem('adminToken');
     return new HttpHeaders({
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -45,9 +45,5 @@ export class AdminService {
     });
   }
 
-  getUserById(): Observable<UserData> {
-    return this.http.get<UserData>(`${this.apiUrl}/getUserById`, {
-      headers: this.getAuthHeaders(),
-    });
-  }
+  
 }

@@ -39,11 +39,13 @@ export class LogoutService {
   }
 
   logout() {
-    // Remove token / clear session storage
-    sessionStorage.removeItem('token'); // adjust as needed
+  
+     localStorage.removeItem('username');
+          localStorage.removeItem('PaymentKey');
+          localStorage.removeItem('imsToken');
 
     // Navigate to login page
-    this.router.navigate(['/login']);
+    this.router.navigate(['/public-landing']);
     alert('Session expired! You have been logged out.');
   }
 }

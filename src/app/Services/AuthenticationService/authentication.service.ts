@@ -16,6 +16,15 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient) {}
 
+  // Helper to build headers with token
+  private getAuthHeaders(): HttpHeaders {
+    const token = localStorage.getItem('imsToken');
+    return new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+  }
+
   sendOtp(email: string): Observable<any> {
     const params = new HttpParams().set('email', email);
     return this.http.post(`${this.baseUrl}/sendOtp`, null, { params });
@@ -36,6 +45,12 @@ export class AuthenticationService {
   login(authRequest: AuthRequest): Observable<string> {
     return this.http.post(`${this.baseUrl}/login`, authRequest, {
       responseType: 'text',
+    });
+  }
+
+  getUserById(): Observable<UserData> {
+    return this.http.get<UserData>(`${this.baseUrl}/getUserById`, {
+      headers: this.getAuthHeaders(),
     });
   }
 

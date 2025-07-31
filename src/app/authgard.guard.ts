@@ -4,13 +4,27 @@ import { Router } from '@angular/router';
 
 
 export const authgardGuard: CanActivateFn = (route, state) => {
-    const paymentStatus = sessionStorage.getItem('PaymentStatus');
-  const router = inject(Router);
 
-  if (!paymentStatus) {
+  const router = inject(Router);
+ 
+  const checkPyament = localStorage.getItem('PaymentKey');
+
+
+  
+
+     if (!checkPyament) {
     router.navigate(['/subscription']);
     return false;
+  
+
+
   }
+
+  
+
+ 
+
+ 
 
   return true;
 };

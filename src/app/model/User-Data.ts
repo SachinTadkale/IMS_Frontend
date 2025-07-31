@@ -4,6 +4,7 @@ export interface UserData{
   email : string,
   store_type : string,
   password : string,
+  isPaid?:boolean,
   status?:string,
   role?:string
 }

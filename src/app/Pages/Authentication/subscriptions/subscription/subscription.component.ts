@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SubPlan } from '../../../../model/Subscriptions/sub-plan';
 import { Router } from '@angular/router';
+import { LogoutService } from '../../../../Services/LogoutService/logout.service';
+import { AuthenticationService } from '../../../../Services/AuthenticationService/authentication.service';
+import { UserData } from '../../../../model/User-Data';
 
 @Component({
   selector: 'app-subscription',
@@ -13,6 +16,16 @@ import { Router } from '@angular/router';
   styleUrl: './subscription.component.css',
 })
 export class SubscriptionComponent implements OnInit{
+
+   user: UserData = {
+      id: 0,
+      full_name: '',
+      email: '',
+      store_type: '',
+      password: '',
+      status: '',
+      role: ''
+    };
 
   selectedPlan:SubPlan={
     title:'',
@@ -46,18 +59,37 @@ export class SubscriptionComponent implements OnInit{
  
 
   isPlanSelected:boolean = false;
+  isPaymentDone:boolean= false;
 
 
 utr='';
   qrUrl?: string;
 
-constructor(private http:HttpClient, private router:Router){}
+constructor(private http:HttpClient, private router:Router, private logoutService:LogoutService, private authenticationService:AuthenticationService){}
 
 
 
   ngOnInit(): void {
+
+    this.fetchUser();
      
   }
+
+  fetchUser() {
+      this.authenticationService.getUserById().subscribe({
+        next: (respUser: UserData) => {
+          this.user = respUser;
+  
+         
+  
+        },
+        error: (error) => {
+          console.error("Error while fetching user", error);
+          // Optionally handle error or redirect
+        }
+      });
+    }
+  
 
   selectPlan(plan: any) {
     this.selectedPlan.title = plan.title;
@@ -79,6 +111,7 @@ constructor(private http:HttpClient, private router:Router){}
       this.http.post<any>(`http://localhost:8080/api/payment/create?amount=${this.selectedPlan.price}&transactionId=${this.utr}`, {})
         .subscribe(data => {
           alert("Payment details saved need some time to verify");
+          this.isPaymentDone= true;
         });
     }
 
@@ -98,10 +131,8 @@ cancelPayment(){
 }
 
   logOut(){
-      sessionStorage.removeItem('token');
-      // Redirect to login page
-      this.router.navigate(['/public-landing']);
-   
+     
+   this.logoutService.logout();
     
   }
   

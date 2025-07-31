@@ -84,7 +84,8 @@ export class AdminDashboardComponent implements OnInit {
   navigate(event: Event): void {
     const ac_option = (event.target as HTMLSelectElement).value;
     if (ac_option === 'logout') {
-      this.router.navigate(['/']);
+      localStorage.removeItem('token');
+      this.router.navigate(['/public-landing']);
     }
   }
 
