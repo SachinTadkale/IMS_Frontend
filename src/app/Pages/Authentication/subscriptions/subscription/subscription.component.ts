@@ -23,6 +23,7 @@ export class SubscriptionComponent implements OnInit{
       email: '',
       store_type: '',
       password: '',
+      paymentStatus:false,
       status: '',
       role: ''
     };
@@ -76,12 +77,15 @@ constructor(private http:HttpClient, private router:Router, private logoutServic
   }
 
   fetchUser() {
+    console.log("fetchUser called !");
       this.authenticationService.getUserById().subscribe({
         next: (respUser: UserData) => {
           this.user = respUser;
-  
-         
-  
+         if(respUser.paymentStatus){
+          this.isPaymentDone=true;
+       
+         }
+
         },
         error: (error) => {
           console.error("Error while fetching user", error);
@@ -106,17 +110,41 @@ constructor(private http:HttpClient, private router:Router, private logoutServic
   }
 
   createPayment() {
-    if(this.utr){
+  if (this.utr) {
     if (this.selectedPlan.price && this.utr) {
-      this.http.post<any>(`http://localhost:8080/api/payment/create?amount=${this.selectedPlan.price}&transactionId=${this.utr}`, {})
-        .subscribe(data => {
-          alert("Payment details saved need some time to verify");
-          this.isPaymentDone= true;
-        });
-    }
 
-  }
-  else{
+      // Get token from local storage
+      const userKey = localStorage.getItem('imsToken');
+      let token = null;
+     
+      token = userKey;
+
+      if (!token) {
+        alert("User is not authenticated. Please login again.");
+        return;
+      }
+
+      // Build headers with Authorization
+      const headers = {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      };
+
+      this.http.post<any>(
+        `http://localhost:8080/api/payment/create?amount=${this.selectedPlan.price}&transactionId=${this.utr}`,
+        {},
+        { headers }
+      )
+      .subscribe({
+        next: (res) =>{
+          alert(res.message);
+          this.isPaymentDone=true;
+          this.fetchUser();
+        },
+        error: (er) => {}
+      });
+    }
+  } else {
     alert("Insert UTR");
   }
 }

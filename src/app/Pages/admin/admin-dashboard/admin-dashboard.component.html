@@ -32,13 +32,19 @@
       <td>{{ user.full_name }}</td>
       <td>{{ user.email }}</td>
       <td>{{ user.store_type }}</td>
-      <td>{{ user.isPaid ? 'Paid':'not paid'}}</td>
+      <td>{{ user.paymentStatus ? 'Paid' : 'not paid'}}</td>
       <td [ngStyle]="{ color: getStatusColor(user.status) }">
         {{ user.status }}
       </td>
-      <td>
-        <img [src]="imageURL" alt="" width="50px" (click)="viewImage(imageURL)" style="cursor: pointer;" />
-      </td>
+   <td>
+  <h4 
+    *ngIf="user.paymentStatus" 
+    (click)="fetchTransaction(user.id)" 
+    class="check-payment">
+    check here
+  </h4>
+  <span *ngIf="!user.paymentStatus">not yet</span>
+</td>
       <td id="action">
         <button id="approve" (click)="approveUser(user.id)">
           <img src="../../../../assets/logos/approve-black.png" width="25px" alt="" />
@@ -49,4 +55,13 @@
       </td>
     </tr>
   </table>
+</div>
+
+<div class="overlay" *ngIf="showOverlay">
+  <div class="overlay-content" *ngFor="let payment of transaction">
+    <h3>{{payment.amount}}₹</h3>
+    <h5>Date of subscription : {{payment.createdAt}}</h5>
+    <h5>UTR no : {{payment.transactionId}}</h5>
+    <button (click)="cancel()">Back</button>
+  </div>
 </div>

@@ -66,3 +66,77 @@ button {
 #reject:hover {
   transform: scale(1.2);
 }
+
+/* Full-screen dark overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* semi-transparent dark background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px; /* for smaller screens */
+  overflow-y: auto;
+}
+
+/* Container for each payment card */
+.overlay-content {
+  background: #fff;
+  padding: 25px 35px;
+  margin: 10px; /* space between multiple payments if they appear */
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  min-width: 250px;
+  max-width: 400px;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Styling text */
+.overlay-content h3 {
+  margin-bottom: 10px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.overlay-content h5 {
+  margin: 4px 0;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Back button style */
+.overlay-content button {
+  margin-top: 15px;
+  padding: 8px 16px;
+  font-size: 1em;
+  background-color: #007bff; /* Bootstrap primary color */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.overlay-content button:hover {
+  background-color: #0056b3;
+}
+
+/* Optional fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+h4.check-payment {
+  cursor: pointer;
+  color: #007bff; /* optional: make it look clickable, like a link */
+  text-decoration: underline; /* optional: underline like a link */
+}
+
+
+

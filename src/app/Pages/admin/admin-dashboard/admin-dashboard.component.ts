@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from '../../../Services/AdminService/admin-service.service';
 import { UserData } from '../../../model/User-Data';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -12,24 +13,64 @@ import { UserData } from '../../../model/User-Data';
   styleUrls: ['./admin-dashboard.component.css'],
 })
 export class AdminDashboardComponent implements OnInit {
-  usersArray: UserData[] = [];
 
-  constructor(private router: Router, private adminService: AdminService) {}
+  transaction:any []=[];
+  usersArray: UserData[]=[];
+
+  showOverlay: boolean = false;
+
+
+  constructor(private router: Router, private adminService: AdminService, private http:HttpClient) {}
 
   ngOnInit(): void {
     this.fetchUser();
+    
   }
 
   // Fetch the list of users from the backend
   fetchUser(): void {
     this.adminService.getUsers().subscribe({
-      next: (data) => {
+      next: (data:any) => {
         this.usersArray = data;
       },
       error: (err) => {
         console.error('Error while fetching users:', err);
       },
     });
+  }
+
+  fetchTransaction(id:number | undefined){
+
+     // Get token from local storage
+      const userKey = localStorage.getItem('adminToken');
+      let token = null;
+     
+      token = userKey;
+
+      if (!token) {
+        alert("User is not authenticated. Please login again.");
+        return;
+      }
+
+      // Build headers with Authorization
+      const headers = {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      };
+
+     this.http.get<any>(
+        `http://localhost:8080/api/payment/byUser/${id}`,
+        {headers}
+      )
+      .subscribe({
+        next: (res) =>{
+        this.transaction = res;
+        console.log(res);
+
+        this.showOverlay=true;
+        },
+        error: (er) => {console.log("Error while fetching transaction");}
+      });
   }
 
   // Handle updating the status of users (approve/reject)
@@ -84,7 +125,7 @@ export class AdminDashboardComponent implements OnInit {
   navigate(event: Event): void {
     const ac_option = (event.target as HTMLSelectElement).value;
     if (ac_option === 'logout') {
-      localStorage.removeItem('token');
+      localStorage.removeItem('adminToken');
       this.router.navigate(['/public-landing']);
     }
   }
@@ -110,5 +151,9 @@ export class AdminDashboardComponent implements OnInit {
     if (id !== undefined) {
       this.updateStatus(id, 'REJECTED'); // Set status to REJECTED for rejection
     }
+  }
+
+  cancel(){
+    this.showOverlay = false;
   }
 }

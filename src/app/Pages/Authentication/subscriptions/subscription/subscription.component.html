@@ -15,7 +15,7 @@
 </div>
 
 
-<div class="cards-container" *ngIf="!isPlanSelected">
+<div class="cards-container" *ngIf="!isPlanSelected && !isPaymentDone">
   <div class="card" *ngFor="let sub of subscriptions" [class.selected]="selectedPlan.title === sub.title">
     <h2>{{ sub.title }}</h2>
     <p class="price">{{ sub.price }}</p>
@@ -51,7 +51,7 @@
   </div>
 </div>
 
-<div class="payment-container" *ngIf="user.isPaid">
+<div class="payment-container" *ngIf="isPaymentDone">
   <img src="../../../../../assets/paymentDone.jpg" width="100" height="100" alt="img"/>
  <h1>Your payment is done waiting for approval</h1>
 </div>
