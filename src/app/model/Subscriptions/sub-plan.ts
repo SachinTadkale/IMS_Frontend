@@ -1,6 +1,6 @@
 export class SubPlan {
 
      title!:string;
-      price!:string;
+      price!:0;
       description!:string;
 }

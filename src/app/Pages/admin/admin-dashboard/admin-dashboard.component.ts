@@ -1,9 +1,12 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from '../../../Services/AdminService/admin-service.service';
 import { UserData } from '../../../model/User-Data';
 import { HttpClient } from '@angular/common/http';
+import { PaymentService } from '../../../Services/PaymentService/payment.service';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { FetchSubscription } from '../../../model/FetchSubscription/fetch-subscription';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -14,13 +17,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  transaction:any []=[];
+
+  
   usersArray: UserData[]=[];
+
+  transactions:any[]=[];
+
+  imageUrl: SafeUrl | null = null;
 
   showOverlay: boolean = false;
 
 
-  constructor(private router: Router, private adminService: AdminService, private http:HttpClient) {}
+  constructor(private router: Router, private adminService: AdminService, private http:HttpClient, private paymentService:PaymentService, private sanitizer:DomSanitizer) {}
 
   ngOnInit(): void {
     this.fetchUser();
@@ -39,39 +47,29 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
-  fetchTransaction(id:number | undefined){
+  fetchTransaction(userId:number | undefined){
 
-     // Get token from local storage
-      const userKey = localStorage.getItem('adminToken');
-      let token = null;
-     
-      token = userKey;
+    console.log("Fetch transaction is called");
 
-      if (!token) {
-        alert("User is not authenticated. Please login again.");
-        return;
+      if (userId != null) {   // checks for both null and undefined
+   this.paymentService.getTransactionsByUserId(userId).subscribe({
+      next: (data) => {
+        this.transactions = data;
+        console.log(this.transactions);
+        this.showOverlay = true;
+      },
+      error: (err) => {
+        console.error('Error loading transactions:', err);
       }
-
-      // Build headers with Authorization
-      const headers = {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      };
-
-     this.http.get<any>(
-        `http://localhost:8080/api/payment/byUser/${id}`,
-        {headers}
-      )
-      .subscribe({
-        next: (res) =>{
-        this.transaction = res;
-        console.log(res);
-
-        this.showOverlay=true;
-        },
-        error: (er) => {console.log("Error while fetching transaction");}
-      });
+    });
+      } else {
+    console.error('User ID is undefined. Cannot fetch transactions.');
   }
+  }
+
+  getImageUrl(transactionId:number): string {
+return this.paymentService.getImageByTransactionId(transactionId);
+}
 
   // Handle updating the status of users (approve/reject)
   updateStatus(id: number | undefined, status: string): void {

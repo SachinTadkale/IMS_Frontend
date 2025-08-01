@@ -58,10 +58,18 @@
 </div>
 
 <div class="overlay" *ngIf="showOverlay">
-  <div class="overlay-content" *ngFor="let payment of transaction">
-    <h3>{{payment.amount}}₹</h3>
-    <h5>Date of subscription : {{payment.createdAt}}</h5>
-    <h5>UTR no : {{payment.transactionId}}</h5>
+  <div class="overlay-content" *ngFor="let transaction of transactions">
+  <div>
+     <img
+            [src]="getImageUrl(transaction.transactionId)"
+            width="300" height="400"
+            alt="screenshot"
+          />
+  </div>
+    
+    <h3>{{transaction.amount}}₹</h3>
+    <h5>Date of subscription : {{transaction.createdAt}}</h5>
+    <h5>UTR no : {{transaction.transactionId}}</h5>
     <button (click)="cancel()">Back</button>
   </div>
 </div>

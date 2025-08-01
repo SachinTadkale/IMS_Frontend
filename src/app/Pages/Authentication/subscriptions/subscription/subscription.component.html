@@ -38,15 +38,10 @@
 
   <div class="form-group">
           <label for="product-image">Upload screenshot</label>
-          <input
-            type="file"
-            name="product-image"
-            #fileInput
-         
-          />
+          <input type="file" (change)="onFileSelected($event)" />
         </div>
   <div class="payment-buttons">
-    <button class="btn primary" (click)="createPayment()">Submit</button>
+    <button class="btn primary" (click)="submitPayment()">Submit</button>
     <button class="btn secondary" (click)="cancelPayment()">Cancel</button>
   </div>
 </div>

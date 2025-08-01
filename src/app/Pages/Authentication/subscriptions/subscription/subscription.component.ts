@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { LogoutService } from '../../../../Services/LogoutService/logout.service';
 import { AuthenticationService } from '../../../../Services/AuthenticationService/authentication.service';
 import { UserData } from '../../../../model/User-Data';
+import { PaymentService } from '../../../../Services/PaymentService/payment.service';
 
 @Component({
   selector: 'app-subscription',
@@ -16,6 +17,10 @@ import { UserData } from '../../../../model/User-Data';
   styleUrl: './subscription.component.css',
 })
 export class SubscriptionComponent implements OnInit{
+
+  
+  selectedFile: File | null = null;
+  message:String ='';
 
    user: UserData = {
       id: 0,
@@ -30,7 +35,7 @@ export class SubscriptionComponent implements OnInit{
 
   selectedPlan:SubPlan={
     title:'',
-    price:'',
+    price:0,
     description:''
   }
 
@@ -66,7 +71,7 @@ export class SubscriptionComponent implements OnInit{
 utr='';
   qrUrl?: string;
 
-constructor(private http:HttpClient, private router:Router, private logoutService:LogoutService, private authenticationService:AuthenticationService){}
+constructor(private http:HttpClient, private router:Router, private logoutService:LogoutService, private authenticationService:AuthenticationService, private paymentService:PaymentService){}
 
 
 
@@ -74,6 +79,43 @@ constructor(private http:HttpClient, private router:Router, private logoutServic
 
     this.fetchUser();
      
+  }
+
+  onFileSelected(event: any) {
+    if (event.target.files && event.target.files.length) {
+      this.selectedFile = event.target.files[0];
+    }
+  }
+
+  submitPayment() {
+    console.log("submiPayment function is called");
+    console.log(this.selectedPlan.price);
+    console.log(this.utr);
+    if(this.selectedFile){
+      console.log("file is selected");
+    }
+    console.log(this.selectedPlan.title);
+    console.log(this.selectedPlan.description);
+
+    if (this.selectedPlan.price && this.utr && this.selectedFile) {
+      this.paymentService.createPayment(this.selectedPlan.title, this.selectedPlan.price,this.selectedPlan.description, this.utr, this.selectedFile)
+        .subscribe({
+          next: (response: any) => {
+            this.message = response.message || 'Payment created successfully!';
+            alert(this.message);
+            this.isPaymentDone=true;
+          this.fetchUser();
+          },
+          error: (error) => {
+            console.error(error);
+            this.message = 'Error creating payment';
+            console.log(this.message);
+          }
+        });
+    } else {
+      this.message = 'Please fill all fields and select a screenshot.';
+      alert(this.message);
+    }
   }
 
   fetchUser() {
