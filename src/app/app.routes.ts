@@ -45,15 +45,6 @@ export const routes: Routes = [
     },
   },
   {
-    path: 'signup',
-    pathMatch: 'full',
-    loadComponent: () => {
-      return import('./Pages/Authentication/sign-up/sign-up.component').then(
-        (m) => m.SignUpComponent
-      );
-    },
-  },
-  {
     path: 'login',
     pathMatch: 'full',
     loadComponent: () => {
@@ -136,7 +127,7 @@ export const routes: Routes = [
       return import(
         './Pages/Electronics-Store/electronics-store-home/electronics-see-more/electronics-see-more.component'
       ).then((m) => m.ElectronicsSeeMoreComponent);
-    },
+    },canActivate: [authgardGuard]
   },
   // <--------------------- Electronics Store Dashboard Routes --------------------->
   {
@@ -146,7 +137,7 @@ export const routes: Routes = [
       return import(
         './Pages/Electronics-Store/UserDashboard/userdashboard/userdashboard.component'
       ).then((m) => m.UserdashboardComponent);
-    },
+    },canActivate: [authgardGuard]
   },
   {
     path: 'electronics-user-dashboard-home',
@@ -156,7 +147,7 @@ export const routes: Routes = [
         './Pages/Electronics-Store/UserDashboard/Sections/home/home.component'
       ).then((m) => m.HomeComponent);
     },
-    outlet: 'outlet2',
+    outlet: 'outlet2',canActivate: [authgardGuard]
   },
   {
     path: 'electronics-myCart',
@@ -165,7 +156,7 @@ export const routes: Routes = [
       return import('./Pages/Electronics-Store/my-cart/my-cart.component').then(
         (m) => m.MyCartComponent
       );
-    },
+    },canActivate: [authgardGuard]
   },
   {
     path: 'electronics-showBilling',
@@ -174,7 +165,7 @@ export const routes: Routes = [
         './Pages/Electronics-Store/UserDashboard/Sections/billing/show-bills/show-bills.component'
       ).then((m) => m.ShowBillsComponent);
     },
-    outlet: 'outlet2',
+    outlet: 'outlet2',canActivate: [authgardGuard]
   },
   {
     path: 'electronics-autoBilling',
@@ -183,7 +174,7 @@ export const routes: Routes = [
         './Pages/Electronics-Store/UserDashboard/Sections/billing/automate-billing/automate-billing.component'
       ).then((m) => m.AutomateBillingComponent);
     },
-    outlet: 'outlet2',
+    outlet: 'outlet2',canActivate: [authgardGuard]
   },
   {
     path: 'sellers',
@@ -192,12 +183,11 @@ export const routes: Routes = [
         './Pages/Electronics-Store/UserDashboard/Sections/sellers/sellers.component'
       ).then((m) => m.SellersComponent);
     },
-    outlet: 'outlet2',
+    outlet: 'outlet2',canActivate: [authgardGuard]
     // This route is for the Sellers section in the Electronics Store User Dashboard
   },
   {
     path: 'subscription',
-    pathMatch: 'full',
     loadComponent: () => {
       return import(
         './Pages/Authentication/subscriptions/subscription/subscription.component'
@@ -212,7 +202,7 @@ export const routes: Routes = [
         './Pages/Electronics-Store/UserDashboard/Sections/product/product.component'
       ).then((m) => m.ProductComponent);
     },
-    outlet: 'outlet2',
+    outlet: 'outlet2',canActivate: [authgardGuard]
   },
   {
     path: 'electronics-user-dashboard-category',
@@ -222,7 +212,7 @@ export const routes: Routes = [
         './Pages/Electronics-Store/UserDashboard/Sections/category/category.component'
       ).then((m) => m.CategoryComponent);
     },
-    outlet: 'outlet2',
+    outlet: 'outlet2',canActivate: [authgardGuard]
   },
   {
     path: 'electronics-user-dashboard-review',
@@ -232,7 +222,7 @@ export const routes: Routes = [
         './Pages/Electronics-Store/UserDashboard/Sections/review/review.component'
       ).then((m) => m.ReviewComponent);
     },
-    outlet: 'outlet2',
+    outlet: 'outlet2',canActivate: [authgardGuard]
   },
   {
     path: 'electronics-user-dashboard-auto-billing',
@@ -242,7 +232,7 @@ export const routes: Routes = [
         './Pages/Electronics-Store/UserDashboard/Sections/billing/automate-billing/automate-billing.component'
       ).then((m) => m.AutomateBillingComponent);
     },
-    outlet: 'outlet2',
+    outlet: 'outlet2',canActivate: [authgardGuard]
   },
   {
     path: 'electronics-user-dashboard-manual-billing',
@@ -252,7 +242,7 @@ export const routes: Routes = [
         './Pages/Electronics-Store/UserDashboard/Sections/billing/manual-billing/manual-billing.component'
       ).then((m) => m.ManualBillingComponent);
     },
-    outlet: 'outlet2',
+    outlet: 'outlet2',canActivate: [authgardGuard]
   },
   {
     path: 'electronics-user-dashboard-show-bills',
@@ -262,7 +252,7 @@ export const routes: Routes = [
         './Pages/Electronics-Store/UserDashboard/Sections/billing/show-bills/show-bills.component'
       ).then((m) => m.ShowBillsComponent);
     },
-    outlet: 'outlet2',
+    outlet: 'outlet2',canActivate: [authgardGuard]
   },
   {
     path: 'electronics-user-dashboard-sellers',
@@ -272,7 +262,7 @@ export const routes: Routes = [
         './Pages/Electronics-Store/UserDashboard/Sections/sellers/sellers.component'
       ).then((m) => m.SellersComponent);
     },
-    outlet: 'outlet2',
+    outlet: 'outlet2',canActivate: [authgardGuard]
   },
 
   {
